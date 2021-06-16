@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "frinine-60e07": {
+      "hosting": {
+        "frinine-front": [
+          "frinine-60e07"
+        ]
+      }
+    }
+  }
+}

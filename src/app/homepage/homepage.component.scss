@@ -1,0 +1,33 @@
+.pi-card {
+    max-width: 400px;
+    border: 55px !important;
+    border-radius: 30px !important;
+    border: #000 !important;
+  }
+.header{
+    border-bottom: 3px solid #000
+}
+mat-sidenav-container{
+  height: 100%;
+}
+mat-sidenav{
+  padding : 16px;
+}
+mat-sidenav{
+  background-color: rgb(64, 152, 224);
+  width : 300px
+}
+.white{
+  color : white
+}
+.white-icon {
+  color: white;
+}
+.font{
+  font-size: 20px
+}
+.bottom-left{
+  position: absolute;
+  bottom: 10px;
+  left : 10px;
+}
