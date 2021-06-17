@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {AuthService} from '../core/auth.service';
 
 @Component({
   selector: 'app-authentication',
@@ -7,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./authentication.component.scss']
 })
 export class AuthenticationComponent implements OnInit {
+  isFlipped = false;
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
   }
-
+  flip(){
+    this.isFlipped = !this.isFlipped;
+    console.log('Card is flipped ' + this.isFlipped);
+  }
 }

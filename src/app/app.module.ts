@@ -14,11 +14,16 @@ import { HttpClientModule, HttpClient} from '@angular/common/http';
 import { AngularFireModule} from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
+import { AuthService } from './core/auth.service';
+import { UserService } from './core/user.service';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { EventComponent } from './event/event.component';
+import {EventService} from './core/event.service';
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		//LoginComponent,
+		EventComponent
 	],
 	imports: [
 		// written modules  
@@ -33,7 +38,7 @@ import { environment } from 'src/environments/environment';
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFireDatabaseModule,
 	],
-	providers: [HttpClientModule],
+	providers: [AuthService, UserService,EventService],
 	bootstrap: [AppComponent]
 })
 export class AppModule {

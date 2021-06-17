@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list'
 import { MatSidenavModule} from '@angular/material/sidenav';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 const MaterialComponents =[
   MatButtonModule
@@ -21,7 +22,8 @@ const MaterialComponents =[
     MatCardModule,
     MatIconModule,
     MatListModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatGridListModule
   ],
   exports: [
     MatButtonModule, 
@@ -31,7 +33,8 @@ const MaterialComponents =[
     MatCardModule,
     MatIconModule,
     MatListModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatGridListModule
   ]
 })
 export class MaterialModule { }

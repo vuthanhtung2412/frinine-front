@@ -51,6 +51,17 @@
         </mat-list-item>
       </mat-list>
     </mat-card>
+
+    <br>
+    <mat-grid-list cols="4" rowHeight="50%">
+      <mat-grid-tile
+              *ngFor="let tile of tiles"
+              [colspan]="tile.cols"
+              [rowspan]="tile.rows"
+              [style.background]="tile.color">
+        {{tile.text}}
+      </mat-grid-tile>
+    </mat-grid-list>
   </mat-sidenav-content>
 
 </mat-sidenav-container>

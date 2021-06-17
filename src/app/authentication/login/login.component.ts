@@ -1,50 +1,47 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , EventEmitter} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from '../../core/auth.service';
-import { User } from '../../interfaces/user'
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
+    inputs:['isFlipped'],
+    outputs:['signInEvent']
 })
 export class LoginComponent implements OnInit {
 
-  constructor(
-    private router: Router,
-    private formBuilder: FormBuilder,
-    private authService: AuthService
-  ) { }
-  
-  loginForm: FormGroup;
+    signInEvent = new EventEmitter<boolean>(); // Pass event to parent works
+    isFlipped : boolean; //Parent to child binding works
+    loginForm: FormGroup;
 
-  // show an spinner while the data is being verified
-  showSpinner = false;
+    constructor(
+        private router: Router,
+        private formBuilder: FormBuilder,
+        private authService: AuthService
+    ) { }
 
-  ngOnInit() : void{
+    ngOnInit() : void{
     this.buildForm()
-  }
+    }
 
-  buildForm() {
-    this.loginForm = this.formBuilder.group({
-        'username': ['',
-            [
-                Validators.required
-            ]
-        ],
-        'password': ['',
-            [
-                Validators.required
-            ]
-        ],
-    });
-  }
+    buildForm() {
+        this.loginForm = this.formBuilder.group({
+            'username': ['', [Validators.required] ],
+            'password': ['', [Validators.required] ],
+        });
+    }
 
-  login(): void {
-    this.authService.login(
-        this.loginForm.value['username'],
-        this.loginForm.value['password']
-    );
-}
+    login(): void {
+        if (this.authService.login ( this.loginForm.value['username'], this.loginForm.value['password'])){
+            this.router.navigate(['/homepage'])
+        }
+    }
+
+    click(){
+        console.log('Register clicked');
+        this.signInEvent.emit(!this.isFlipped);
+        console.log('Card is flipped ' + !this.isFlipped);
+    }
 }

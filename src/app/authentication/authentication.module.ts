@@ -3,10 +3,14 @@ import {CommonModule} from '@angular/common';
 import {LoginComponent} from "./login/login.component";
 import { MaterialModule } from '../shared/material.module'
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { AuthenticationComponent } from './authentication.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
     declarations: [
-        LoginComponent,
+        LoginComponent, 
+        AuthenticationComponent,
+        RegisterComponent,
     ],
     imports: [
         CommonModule,
@@ -16,6 +20,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     ],
     exports: [
         LoginComponent,
+        AuthenticationComponent,
+        RegisterComponent
     ]
 })
 export class AuthenticationModule { }
