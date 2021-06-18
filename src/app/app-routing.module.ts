@@ -13,7 +13,7 @@ const routes: Routes = [
 	{path: 'registration', component: RegisterComponent},
 	{ path: 'login', component: LoginComponent },
 	{ path: 'authentication', component: AuthenticationComponent},
-	{ path: 'homepage', component: HomepageComponent},
+	{ path: 'homepage/:id', component: HomepageComponent},
 	{ path: 'user/:id', component: UserComponent },
 	{ path: 'event/:id', component: EventComponent },
 ];

@@ -30,5 +30,5 @@ export const MockUsersDb: User[]=[
 		name : 'tom',
 		gmail : 'tom@gmail.com',
 		password: 'tom'
-	}
+	},
 ]

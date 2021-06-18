@@ -54,12 +54,32 @@
 
     <br>
     <mat-grid-list cols="4" rowHeight="400px">
-      <mat-grid-tile
+      <!--<mat-grid-tile
               *ngFor="let tile of tiles"
               [colspan]="tile.cols"
               [rowspan]="tile.rows"
               [style.background]="tile.color">
+
         {{tile.text}}
+      </mat-grid-tile> -->
+      <h1 style="border-bottom: 2px solid #555251 ; font-size: 30px; padding-left: 30px; color:#37474F ; font-weight: bold; letter-spacing: 5px">My Events</h1>
+      <mat-grid-tile *ngFor="let e of events">
+        <!--CONTENT OF THE TILE -->
+        <mat-card class='pi-card'>
+          <mat-list>
+            <div> <h1 class='header'> Events Informations </h1> </div>
+            <mat-list-item>
+              <mat-icon mat-list-icon>local_activity</mat-icon>
+              <div mat-line>Event</div>
+              <div mat-line>{{e.name}}</div>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon mat-list-icon>room</mat-icon>
+              <div mat-line> Location </div>
+              <div mat-line >{{e.location}}</div>
+            </mat-list-item>
+          </mat-list>
+        </mat-card>
       </mat-grid-tile>
     </mat-grid-list>
 

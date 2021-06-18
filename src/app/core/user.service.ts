@@ -20,16 +20,14 @@ export class UserService {
   constructor(
       private http: HttpClient,
       db: AngularFireDatabase
-  ){ 
-
+  ){
   } 
 
-  //to be replace with an user get form firestore
-  getUserById(id){
+  getUserById(id){ //return the const user
     return this.user;
   }
 
-  getUserByID(id): Observable<User>{
+  getUserByID(id): Observable<User>{ // return the user by ID from the mock database
     const event = MockUsersDb.find(e => e.id ===id)!;
     return of(event);
   }

@@ -16,7 +16,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './core/auth.service';
 import { UserService } from './core/user.service';
-import { AuthenticationComponent } from './authentication/authentication.component';
 import { EventComponent } from './event/event.component';
 import {EventService} from './core/event.service';
 import { UserComponent } from './user/user.component';
@@ -40,7 +39,8 @@ import { UserComponent } from './user/user.component';
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFireDatabaseModule,
 	],
-	providers: [AuthService, UserService,EventService],
+	providers: [AuthService, UserService, EventService],
+	exports: [],
 	bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -24,8 +24,7 @@ export class UserComponent implements OnInit {
 
   getUser():void{
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.userService.getUserByID(id).
-      subscribe(user => this.user = user)
+    this.userService.getUserByID(id).subscribe(user => this.user = user)
   }
 
 }

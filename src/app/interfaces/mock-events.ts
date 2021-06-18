@@ -36,5 +36,11 @@ export const MockEventsDb : Event[] =[
 		capacity: 500,
 		organiserID: 5
 	},
-
+	{
+		id: 6,
+		name: 'Tung Event 2',
+		location: 'Republique, Rennes',
+		capacity: 500,
+		organiserID: 1
+	},
 ]

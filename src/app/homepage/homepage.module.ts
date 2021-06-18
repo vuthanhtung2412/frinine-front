@@ -5,10 +5,10 @@ import { HomepageComponent } from './homepage.component';
 
 @NgModule({
   declarations: [HomepageComponent],
-  imports: [
-    CommonModule,
-    MaterialModule
-  ],
+	imports: [
+		CommonModule,
+		MaterialModule,
+	],
   exports : [HomepageComponent]
 })
 export class HomepageModule { }

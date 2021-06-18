@@ -39,10 +39,11 @@ export class RegisterComponent implements OnInit {
   }
 
   signUp(): void {
-    this.authService.signUp(
+    /* this.authService.signUp(
         this.signUpForm.value['username'],
         this.signUpForm.value['password']
-    );
+    );*/
+    this.router.navigate(['/homepage/1']).then()
   }
 
   click(){
