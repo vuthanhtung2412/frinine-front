@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter} from '@angular/core';
 import {Router} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../core/auth.service';
 
 @Component({
@@ -28,8 +28,13 @@ export class RegisterComponent implements OnInit {
 
   buildForm() {
     this.signUpForm = this.formBuilder.group({
+      'nom': ['', [Validators.required]],
+      'prenom': ['', [Validators.required]],
+      'mail':['',[Validators.required,Validators.email]],
       'username': ['', [Validators.required]],
       'password': ['', [Validators.required]],
+      'gender': ['',[Validators.required]],
+      'date-of-birth':['',[Validators.required]]
     });
   }
 

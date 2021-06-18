@@ -5,5 +5,5 @@ export interface Event{
 	name: string;
 	location: string;
 	capacity : number;
-	organiser: User;
+	organiserID: number;
 }

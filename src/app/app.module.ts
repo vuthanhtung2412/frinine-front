@@ -19,11 +19,13 @@ import { UserService } from './core/user.service';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { EventComponent } from './event/event.component';
 import {EventService} from './core/event.service';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		EventComponent
+		EventComponent,
+		UserComponent
 	],
 	imports: [
 		// written modules  
