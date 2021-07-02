@@ -1,0 +1,56 @@
+.pi-card {
+    margin: 10px;
+    position: relative;
+    width: 25%;
+    min-width: 200px;
+    border-radius: 30px ;
+    border: #000;
+}
+.event-card {
+    height: 220px;
+    border-radius: 30px ;
+    margin-bottom: 20px;
+}
+.add-card {
+    margin-bottom: 20px;
+    height: 220px;
+    border-radius: 30px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.event-card:hover , .add-card:hover{
+    background-color: lightgrey;
+    transform: scale(1.05);
+    transition-duration: 0.3s;
+    -webkit-transition: background-color 0.3s ease-in-out;
+}
+
+.header{
+    border-bottom: 3px solid #000
+}
+mat-sidenav-container{
+  height: 100%;
+}
+mat-sidenav{
+  padding : 16px;
+}
+mat-sidenav{
+  background-color: rgb(64, 152, 224);
+  width : 300px
+}
+.white{
+  color : white
+}
+.white-icon {
+  color: white;
+}
+.font{
+  font-size: 20px
+}
+.bottom-left{
+  position: absolute;
+  bottom: 10px;
+  left : 10px;
+}

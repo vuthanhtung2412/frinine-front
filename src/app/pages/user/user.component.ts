@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { UserService } from '../core/user.service';
-import { User } from '../interfaces/user';
+import { UserService } from '../../core/user.service';
+import { User } from '../../interfaces/user';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',

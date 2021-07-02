@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Event } from '../interfaces/event'
-import { MockEventsDb } from '../interfaces/mock-events'
-import {from, Observable, of} from 'rxjs';
+import {Injectable} from '@angular/core';
+import {Event} from '../interfaces/event';
+import {MockEventsDb} from '../interfaces/mock-events';
+import {Observable, of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +18,9 @@ export class EventService {
   getEventByOrganiser(id): Observable<Event[]>{
     const events = MockEventsDb.filter(e => e.organiserID === id)
     return of(events)
+  }
+
+  getEvents(): Observable<Event[]>{
+    return of(MockEventsDb)
   }
 }

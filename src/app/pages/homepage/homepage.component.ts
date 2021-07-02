@@ -1,12 +1,12 @@
 import { Component, OnInit , Input } from '@angular/core';
-import { User } from '../interfaces/user'
-import { Event} from '../interfaces/event';
+import { User } from '../../interfaces/user'
+import { Event} from '../../interfaces/event';
 import { Location } from '@angular/common';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute,Router} from '@angular/router';
 
 // Services
-import { UserService } from '../core/user.service';
-import { EventService } from '../core/event.service';
+import { UserService } from '../../core/user.service';
+import { EventService } from '../../core/event.service';
 
 //interface to defined tile
 export interface Tile {
@@ -19,13 +19,13 @@ export interface Tile {
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.scss']
+  styleUrls: ['./homepage.component.scss'],
+  inputs : ['id']
 })
 export class HomepageComponent implements OnInit {
 
   user : User;
   events: Event[];
-  sidenavOpened = false;
   id : number;
 
   tiles: Tile[] = [
@@ -41,6 +41,7 @@ export class HomepageComponent implements OnInit {
       private location: Location,
       private userService: UserService,
       private eventService: EventService,
+      private router: Router,
   ){
   }
 
@@ -57,5 +58,15 @@ export class HomepageComponent implements OnInit {
     this.eventService.getEventByOrganiser(id).subscribe(
         (e) => this.events = e
     )
+  }
+  checkClick(){
+    console.log("clicked")
+  }
+  addEvents(){
+    this.router.navigate(['menu/add-event']).then()
+  }
+
+  toEvent(id){
+    this.router.navigate( ['menu/event', id,"1"]).then()
   }
 }

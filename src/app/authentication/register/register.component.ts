@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
         this.signUpForm.value['username'],
         this.signUpForm.value['password']
     );*/
-    this.router.navigate(['/homepage/1']).then()
+    this.router.navigate(['menu/homepage/1']).then()
   }
 
   click(){

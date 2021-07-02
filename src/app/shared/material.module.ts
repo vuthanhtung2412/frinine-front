@@ -11,6 +11,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatStepperModule} from '@angular/material/stepper';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {MatMenuModule} from '@angular/material/menu';
 
 const MaterialComponents =[
   MatButtonModule
@@ -29,7 +32,10 @@ const MaterialComponents =[
     MatGridListModule,
     MatRadioModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatStepperModule,
+    FlexLayoutModule,
+    MatMenuModule
   ],
   exports: [
     MatButtonModule, 
@@ -43,7 +49,10 @@ const MaterialComponents =[
     MatGridListModule,
     MatRadioModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatStepperModule,
+    FlexLayoutModule,
+    MatMenuModule
   ]
 })
 export class MaterialModule { }

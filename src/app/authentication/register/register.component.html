@@ -1,7 +1,7 @@
 <mat-card>
 	<mat-card-title style="color: #cd5b45; text-align: center"> Resgistration </mat-card-title>
 	<mat-card-content>
-		<form fxLayout="column" fxLayoutAlign="start stretch" [formGroup]="signUpForm" (ngSubmit)="signUp()">
+		<form [formGroup]="signUpForm" (ngSubmit)="signUp()">
 
 			<div class="row">
 				<div class="column">
@@ -22,7 +22,7 @@
 					</mat-form-field>
 					<br>
 
-					<mat-form-field>
+					<mat-form-field color="warn">
 						<input matInput [matDatepicker]="picker" placeholder="Date of birth" name="birthday" formControlName="date-of-birth">
 						<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
 						<mat-datepicker #picker></mat-datepicker>
