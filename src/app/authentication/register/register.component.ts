@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
     this.signUpForm = this.formBuilder.group({
       'nom': ['', [Validators.required]],
       'prenom': ['', [Validators.required]],
-      'mail':['',[Validators.required,Validators.email]],
+      'email':['',[Validators.required,Validators.email]],
       'username': ['', [Validators.required]],
       'password': ['', [Validators.required]],
       'gender': ['',[Validators.required]],
@@ -39,10 +39,10 @@ export class RegisterComponent implements OnInit {
   }
 
   signUp(): void {
-    /* this.authService.signUp(
-        this.signUpForm.value['username'],
+    this.authService.signUp(
+        this.signUpForm.value['email'],
         this.signUpForm.value['password']
-    );*/
+    );
     this.router.navigate(['menu/homepage/1']).then()
   }
 
