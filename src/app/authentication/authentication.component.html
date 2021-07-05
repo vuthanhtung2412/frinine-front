@@ -6,10 +6,10 @@
 	</mat-toolbar-row>
 	</mat-toolbar>
 </p>
-<div class="container">
-	<div class = 'card' [ngClass]="{'flipped': isFlipped }" >
-		<app-login class = 'card front' [isFlipped]="isFlipped" (signInEvent)="isFlipped=$event"></app-login>
-		<app-register class = 'card back' [isFlipped]="isFlipped" (signUpEvent)="isFlipped=$event"></app-register>
+<div class="box">
+	<div class = 'frame' [ngClass]="{'flipped': isFlipped }" >
+		<app-login class = 'frame front' [isFlipped]="isFlipped" (signInEvent)="isFlipped=$event"></app-login>
+		<app-register class = 'frame back' [isFlipped]="isFlipped" (signUpEvent)="isFlipped=$event"></app-register>
 	</div>
 </div>
 <button (click)="flip()" style ='display: none'>Flip card</button>

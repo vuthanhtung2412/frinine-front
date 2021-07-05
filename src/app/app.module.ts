@@ -5,9 +5,12 @@ import {AppComponent} from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module'
 import { HttpClientModule, HttpClient} from '@angular/common/http';
+
+//Firebase module
 import { AngularFireModule} from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
+import { AngularFirestoreModule } from "@angular/fire/firestore";
 
 
 
@@ -40,8 +43,11 @@ import { AdminLayoutModule} from './admin-layout/admin-layout.module';
 		BrowserAnimationsModule,
 		MaterialModule,
 		HttpClientModule,
+
+		//Firebase module
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFireDatabaseModule,
+		AngularFirestoreModule
 	],
 	providers: [AuthService, UserService, EventService],
 	exports: [],

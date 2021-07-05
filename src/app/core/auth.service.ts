@@ -3,7 +3,7 @@ import { User } from '../interfaces/user';
 import { MockUsersDb } from '../interfaces/mock-users';
 
 //Firebase's imports
-import firebase from 'firebase';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({
@@ -16,8 +16,10 @@ export class AuthService {
   constructor(
   	// user: User
 	// The stupid fault which take me a week to figure out
-	 public auth: AngularFireAuth
+    private db: AngularFirestore,
+    private auth: AngularFireAuth
   ) {
+  	this.auth.signOut()
   	// Realtime authentication listener
   	this.auth.onAuthStateChanged(frinineUser =>{
   		if(frinineUser){
@@ -40,8 +42,17 @@ export class AuthService {
 	return true;
   }
 
-  signUp( email, pass){
-  	const promise = this.auth.createUserWithEmailAndPassword(email, pass).then(r => {});
+  signUp( email, pass, name, surname, gender, dob, username){
+  	const promise = this.auth.createUserWithEmailAndPassword(email, pass).then(cred => {
+  		return this.db.collection('users').doc(cred.user.uid).set({
+		    email: email,
+		    name : name,
+		    surname: surname,
+		    gender: gender,
+		    dob: dob,
+		    username: username,
+	    })
+    }).then(() => {});
   	promise.catch(e => console.log(e.message))
   	return false;
   }

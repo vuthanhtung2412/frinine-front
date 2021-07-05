@@ -13,7 +13,7 @@ export class UserService {
     user : User ={
         id : 1 ,
         name :'tung',
-        gmail:"tung@gmail.com",
+        email:"tung@gmail.com",
         password: 'tung2412'
     }
 
