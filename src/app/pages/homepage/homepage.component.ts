@@ -24,9 +24,11 @@ export interface Tile {
 })
 export class HomepageComponent implements OnInit {
 
+  nums = [1,2,3,4,5,6,7,8]
   user : User;
-  events: Event[];
-  id : number;
+  events: Event[] = [];
+  id : string;
+  birthday: any; //Convert birhtday from timestamp type to date type
 
   tiles: Tile[] = [
     {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
@@ -46,17 +48,23 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.id = Number(this.route.snapshot.paramMap.get('id'));
-    this.userService.getUserByID(this.id).subscribe(user => this.user = user)
-    console.log(this.user);
-
-    this.getEvents(this.id)
-    console.log(this.events)
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.userService.getUserByID(this.id)
+        .subscribe(user =>{
+          this.user = user;
+          this.birthday = user.birthday.seconds
+          console.log(this.user);
+          this.getEvents(this.id);
+          //console.log(this.events);
+        })
   }
 
   getEvents(id){
     this.eventService.getEventByOrganiser(id).subscribe(
-        (e) => this.events = e
+        e => {
+          console.log(e)
+          this.events = e
+        }
     )
   }
   checkClick(){

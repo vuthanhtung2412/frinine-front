@@ -5,25 +5,26 @@ import { MockUsersDb } from '../interfaces/mock-users';
 //Firebase's imports
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-	user : User;
-
   constructor(
   	// user: User
 	// The stupid fault which take me a week to figure out
     private db: AngularFirestore,
-    private auth: AngularFireAuth
+    public auth: AngularFireAuth,
+    private router: Router
   ) {
-  	this.auth.signOut()
+  	//this.auth.signOut()
   	// Realtime authentication listener
   	this.auth.onAuthStateChanged(frinineUser =>{
   		if(frinineUser){
   			console.log(frinineUser)
+		    console.log(frinineUser.uid)
 	    }else{
   			console.log('not logged in ');
 	    }
@@ -35,24 +36,22 @@ export class AuthService {
 
   // LOGIN
   login( email, pass){
-  	let user = null
-  	const promise = this.auth.signInWithEmailAndPassword(email, pass).then(r => {});
+  	let uid = '1';
+  	const promise = this.auth.signInWithEmailAndPassword(email, pass).then(cred => {
+  		uid = cred.user.uid
+	    this.router.navigate(['menu/homepage/'+uid]).then()
+    });
   	promise.catch( e=> console.log(e.message)) // this doesn't log the info of the
-	  console.log(this.auth)
-	return true;
   }
 
-  signUp( email, pass, name, surname, gender, dob, username){
-  	const promise = this.auth.createUserWithEmailAndPassword(email, pass).then(cred => {
-  		return this.db.collection('users').doc(cred.user.uid).set({
-		    email: email,
-		    name : name,
-		    surname: surname,
-		    gender: gender,
-		    dob: dob,
-		    username: username,
-	    })
-    }).then(() => {});
+  signUp( email, pass, user:User ){
+  	const promise = this.auth.createUserWithEmailAndPassword(email, pass)
+	    .then(cred => {
+		    this.router.navigate(['menu/homepage/'+cred.user.uid]).then()
+	    	return this.db.collection('users').doc(cred.user.uid).set(user)
+    })
+	    .then(() => {});
+
   	promise.catch(e => console.log(e.message))
   	return false;
   }
@@ -60,6 +59,7 @@ export class AuthService {
   logOut(){
   	this.auth.signOut()
   }
+
 }
 
 

@@ -1,34 +1,37 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../interfaces/user';
-import {AngularFireDatabase} from '@angular/fire/database';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { MockUsersDb } from '../interfaces/mock-users'
 import { Observable ,of} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-    user : User ={
-        id : 1 ,
-        name :'tung',
-        email:"tung@gmail.com",
-        password: 'tung2412'
-    }
-
   constructor(
       private http: HttpClient,
-      db: AngularFireDatabase
+      private db: AngularFirestore,
   ){
   } 
 
-  getUserById(id){ //return the const user
-    return this.user;
+  getUserByID(id):Observable<any>{ // return the user by ID from the mock database
+    //const user = MockUsersDb.find(u => u.id ===id)!;
+    //return of(user);
+      return this.db
+          .collection('users')
+          .doc(id)
+          .valueChanges()
   }
 
-  getUserByID(id): Observable<User>{ // return the user by ID from the mock database
-    const event = MockUsersDb.find(e => e.id ===id)!;
-    return of(event);
-  }
+
+  /*getUserDoc(id) {
+        return this.angularFirestore
+            .collection('user-collection')
+            .doc(id)
+            .valueChanges()
+    }
+   */
 }

@@ -1,12 +1,17 @@
 import {User} from './user'
 
 export interface Event{
-	id : number;
+	id? : string;
 	name: string;
-	location: string;
-	time ?: string;
-	duration ?: string;
+	online?: boolean;
+	offline?: boolean;
+	location?: string;
+	link? : string;
+	date? : string
+	time?: string;
+	duration ?: number;
 	invPlaces ?: number;
+	soldPlaces ?: number;
 	capacity : number;
-	organiserID: number;
+	organiserID: string;
 }

@@ -34,9 +34,10 @@ export class LoginComponent implements OnInit {
     }
 
     login(): void {
-        if (this.authService.login ( this.loginForm.value['username'], this.loginForm.value['password'])){
-            this.router.navigate(['menu/homepage/1']).then()
-        }
+        this.authService.login ( this.loginForm.value['username'], this.loginForm.value['password'])
+        //if (this.authService.login ( this.loginForm.value['username'], this.loginForm.value['password'])){
+        //   this.router.navigate(['menu/homepage/1']).then()
+        //}
     }
 
     click(){

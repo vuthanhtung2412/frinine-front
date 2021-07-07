@@ -1,6 +1,6 @@
 export type gender = 'm'|'f'
 export interface User {
-    id? : number;
+    id? : string;
     name: string;
     surname?: string;
     gender ? : gender;
@@ -8,5 +8,5 @@ export interface User {
     username?: string;
     nationality?: string;
     email: string;
-    password: string;
+    password?: string;
 }

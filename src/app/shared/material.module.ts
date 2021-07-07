@@ -14,6 +14,9 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatStepperModule} from '@angular/material/stepper';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDialogModule} from '@angular/material/dialog';
+import {TextFieldModule} from '@angular/cdk/text-field';
 
 const MaterialComponents =[
   MatButtonModule
@@ -35,7 +38,10 @@ const MaterialComponents =[
     MatNativeDateModule,
     MatStepperModule,
     FlexLayoutModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    TextFieldModule
   ],
   exports: [
     MatButtonModule, 
@@ -52,7 +58,10 @@ const MaterialComponents =[
     MatNativeDateModule,
     MatStepperModule,
     FlexLayoutModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    TextFieldModule
   ]
 })
 export class MaterialModule { }
