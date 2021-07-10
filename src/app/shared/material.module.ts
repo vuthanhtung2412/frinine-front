@@ -17,7 +17,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
 import {TextFieldModule} from '@angular/cdk/text-field';
-
+import {NgxMatIntlTelInputModule} from 'ngx-mat-intl-tel-input';
 const MaterialComponents =[
   MatButtonModule
 ]
@@ -41,7 +41,8 @@ const MaterialComponents =[
     MatMenuModule,
     MatCheckboxModule,
     MatDialogModule,
-    TextFieldModule
+    TextFieldModule,
+    NgxMatIntlTelInputModule
   ],
   exports: [
     MatButtonModule, 
@@ -61,7 +62,8 @@ const MaterialComponents =[
     MatMenuModule,
     MatCheckboxModule,
     MatDialogModule,
-    TextFieldModule
+    TextFieldModule,
+    NgxMatIntlTelInputModule
   ]
 })
 export class MaterialModule { }

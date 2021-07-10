@@ -8,5 +8,6 @@ export interface User {
     username?: string;
     nationality?: string;
     email: string;
+    telephone ?: string
     password?: string;
 }

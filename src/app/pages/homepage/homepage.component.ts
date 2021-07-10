@@ -24,11 +24,17 @@ export interface Tile {
 })
 export class HomepageComponent implements OnInit {
 
-  nums = [1,2,3,4,5,6,7,8]
+  isFlipped = false;
+
+  nums = [1,2,3,4,5]
   user : User;
   events: Event[] = [];
   id : string;
   birthday: any; //Convert birhtday from timestamp type to date type
+
+  timer = 0;
+  interval : any
+  click = true
 
   tiles: Tile[] = [
     {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
@@ -77,4 +83,39 @@ export class HomepageComponent implements OnInit {
   toEvent(id){
     this.router.navigate( ['menu/event', id,"1"]).then()
   }
+
+  deleteEvent(id){
+    this.eventService.deleteEvent(id).then(()=>{
+      window.location.reload()
+    })
+  }
+
+  mousedown(){
+    this.interval = setInterval(() => {
+      if(this.timer < 10) {
+        this.timer ++ ;
+      } else {
+        // ADD ACTION WHILE HOLD
+        this.isFlipped = !this.isFlipped
+        clearInterval(this.interval)
+        console.log('Hold!')
+        this.timer = 0
+        this.click = false
+      }
+    },100)
+  }
+
+  mouseup(id){
+    if(this.timer<10){
+      if(this.click){
+        //ADD ACTION WHILE CLICK
+        this.toEvent(id)
+        console.log('Click!')
+      }
+      this.click = true
+      clearInterval(this.interval)
+      this.timer = 0
+    }
+  }
+
 }

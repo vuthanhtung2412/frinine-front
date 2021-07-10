@@ -25,9 +25,16 @@ export class EventService {
   getEventByOrganiser(id): Observable<any>{
     return this.db
         .collection('events',ref => ref.where('organiserID','==',id))
-        .valueChanges()
+        .valueChanges({idField: 'id'})
     //const events = MockEventsDb.filter(e => e.organiserID === id)
     //return of(events)
+  }
+
+  deleteEvent(id){
+    return this.db
+        .collection("events")
+        .doc(id)
+        .delete();
   }
 
   createEvent(e: Event){
@@ -35,7 +42,7 @@ export class EventService {
       this.db
           .collection("events")
           .add(e)
-          .then(response => { console.log(response) }, error => reject(error));
+          .then(response => { console.log(response) },error => reject(error));
     });
   }
 
