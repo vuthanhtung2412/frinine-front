@@ -10,6 +10,7 @@ import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import {DiscoverComponent} from './pages/discover/discover.component';
 import {CreateEventsComponent} from './pages/create-events/create-events.component';
 import {StatsComponent} from './pages/homepage/stats/stats.component';
+import {EventManagementComponent} from './pages/event-management/event-management.component';
 
 const routes: Routes = [
 	{ path: 'chart', component: StatsComponent},
@@ -25,7 +26,8 @@ const routes: Routes = [
 			{ path:'discover', component: DiscoverComponent},
 			{ path: 'homepage/:id', component: HomepageComponent},
 			{ path: 'add-event', component: CreateEventsComponent},
-			{ path: 'event/:id/:isAuthor', component: EventComponent },
+			{ path: 'event/:id', component: EventComponent },
+			{ path: 'event-management/:id', component: EventManagementComponent}
 		]
 	}
 ];

@@ -12,6 +12,7 @@ import { DebugService} from '../core/debug.service';
 })
 export class AdminLayoutComponent implements OnInit {
 
+  showSubmenu: boolean = false;
   id : number
   //user : User ;
   showFiller = false;

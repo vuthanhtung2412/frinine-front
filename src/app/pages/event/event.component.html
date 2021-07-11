@@ -1,11 +1,9 @@
-<p>event works!</p>
-<mat-card class='pi-card'>
+<mat-card class='pi-card' style="margin-bottom: 30px">
 	<div> <h1 class='header'> Events Informations </h1> </div>
 
 	<div class="container">
 		<div class="row">
 			<div class="col">
-				Column 1
 				<mat-list>
 					<mat-list-item>
 						<mat-icon mat-list-icon>local_activity</mat-icon>
@@ -15,7 +13,7 @@
 					<mat-list-item>
 						<mat-icon mat-list-icon>schedule</mat-icon>
 						<div mat-line> Schedule </div>
-						<div mat-line>{{time*1000|date}}</div>
+						<div mat-line>{{time*1000|date}}, {{event.time}}</div>
 					</mat-list-item>
 					<mat-list-item>
 						<mat-icon mat-list-icon>room</mat-icon>
@@ -31,7 +29,6 @@
 			</div>
 
 			<div class="col">
-				Column 2
 				<mat-list>
 					<mat-list-item>
 						<mat-icon mat-list-icon>event_seat</mat-icon>
@@ -51,15 +48,10 @@
 					<mat-list-item>
 						<mat-icon mat-list-icon>contacts</mat-icon>
 						<div mat-line> Organiser's Contact</div>
-						<div mat-line>{{organiserMail}}</div>
+						<div mat-line>{{event.email}}</div>
 					</mat-list-item>
 				</mat-list>
 			</div>
 		</div>
 	</div>
-
-
 </mat-card>
-<button mat-raised-button color="primary" style="transform: scale(1.3); position: fixed; bottom: 50px; font-weight: bold; left: 50%;
-      translate(-50%, -50%);" *ngIf="isAuthor==1" >Modify
-</button>

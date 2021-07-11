@@ -24,9 +24,8 @@ export interface Tile {
 })
 export class HomepageComponent implements OnInit {
 
-  isFlipped = false;
+  isFlipped : boolean[];
 
-  nums = [1,2,3,4,5]
   user : User;
   events: Event[] = [];
   id : string;
@@ -70,6 +69,8 @@ export class HomepageComponent implements OnInit {
         e => {
           console.log(e)
           this.events = e
+          this.isFlipped = new Array(e.len)
+          this.isFlipped.fill(false)
         }
     )
   }
@@ -81,35 +82,38 @@ export class HomepageComponent implements OnInit {
   }
 
   toEvent(id){
-    this.router.navigate( ['menu/event', id,"1"]).then()
+    this.router.navigate( ['menu/event',id]).then()
   }
 
+  toEventManagement(id){
+    this.router.navigate( ['menu/event-management',id]).then()
+  }
   deleteEvent(id){
     this.eventService.deleteEvent(id).then(()=>{
       window.location.reload()
     })
   }
 
-  mousedown(){
+  mousedown(i){
     this.interval = setInterval(() => {
-      if(this.timer < 10) {
+      if(this.timer < 20) {
         this.timer ++ ;
       } else {
         // ADD ACTION WHILE HOLD
-        this.isFlipped = !this.isFlipped
+        this.isFlipped[i] = !this.isFlipped[i]
         clearInterval(this.interval)
         console.log('Hold!')
         this.timer = 0
         this.click = false
       }
-    },100)
+    },50)
   }
 
   mouseup(id){
-    if(this.timer<10){
+    if(this.timer<20){
       if(this.click){
         //ADD ACTION WHILE CLICK
-        this.toEvent(id)
+        this.toEventManagement(id)
         console.log('Click!')
       }
       this.click = true

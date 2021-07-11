@@ -58,7 +58,7 @@
 
 <h1 style="border-bottom: 2px solid grey ; font-size: 30px; padding-left: 30px; color:#37474F ; font-weight: bold; letter-spacing: 5px">My Events(Boostrap)</h1>
 <div class="container-fluid">
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4">
 
     <!-- CARD TO ADD EVENT -->
     <div>
@@ -71,14 +71,16 @@
     </div>
 
     <!--FLIPABLE EVENT CARD -->
-    <div *ngFor="let e of events" class="col p-2 box" >
-      <div class = 'frame' [ngClass]="{'flipped': isFlipped }">
+    <div *ngFor="let e of events; let i = index" class="col p-2 box" >
+      <div class = 'frame' [ngClass]="{'flipped': isFlipped[i] }">
+
         <!--FRONTSIDE-->
-        <mat-card (mousedown)="mousedown()"
+        <mat-card (mousedown)="mousedown(i)"
                   (mouseup)="mouseup(e.id)"
+                  [ngStyle]="{'opacity': 1-timer/15}"
                   class="frame front">
           <mat-list>
-            <div> <h1 class='header'> {{e.name}} [FLIPPABLE] </h1> </div>
+            <div> <h1 class='header'> {{e.name}} <br> [EVENT MANAGEMENT] </h1> </div>
             <mat-list-item>
               <mat-icon mat-list-icon>room</mat-icon>
               <div mat-line> Location </div>
@@ -97,7 +99,7 @@
               YES
             </button>
             <button color="primary" mat-flat-button style=" font-weight: bold"
-                    (click)="isFlipped = !isFlipped">
+                    (click)="isFlipped[i] = !isFlipped[i]">
               NO
             </button>
           </div>

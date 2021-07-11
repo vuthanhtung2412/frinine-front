@@ -17,7 +17,11 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
 import {TextFieldModule} from '@angular/cdk/text-field';
+import {MatTabsModule} from '@angular/material/tabs';
+
+//INTERNATIONAL PHONE NUMBER PICKER
 import {NgxMatIntlTelInputModule} from 'ngx-mat-intl-tel-input';
+
 const MaterialComponents =[
   MatButtonModule
 ]
@@ -42,7 +46,8 @@ const MaterialComponents =[
     MatCheckboxModule,
     MatDialogModule,
     TextFieldModule,
-    NgxMatIntlTelInputModule
+    MatTabsModule,
+    NgxMatIntlTelInputModule,
   ],
   exports: [
     MatButtonModule, 
@@ -63,6 +68,7 @@ const MaterialComponents =[
     MatCheckboxModule,
     MatDialogModule,
     TextFieldModule,
+    MatTabsModule,
     NgxMatIntlTelInputModule
   ]
 })
