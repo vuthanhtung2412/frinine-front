@@ -5,8 +5,8 @@ import { Location } from '@angular/common';
 import {ActivatedRoute,Router} from '@angular/router';
 
 // Services
-import { UserService } from '../../core/user.service';
-import { EventService } from '../../core/event.service';
+import { UserService } from '../../app-service/user.service';
+import { EventService } from '../../app-service/event.service';
 
 //interface to defined tile
 export interface Tile {

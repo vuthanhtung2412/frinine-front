@@ -50,6 +50,13 @@ export class EventService {
       return of(MockEventsDb)
   }
 
+  updateUser(updates, id) {
+    return this.db
+        .collection("events")
+        .doc(id)
+        .update(updates);
+  }
+
 
   /*getUserDoc(id) {
     return this.angularFirestore

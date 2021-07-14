@@ -1,0 +1,13 @@
+.ticket-card{
+	transition: all ease 0.8s;
+	opacity: 1;
+}
+.date-tile{
+	transition: all ease 0.8s;
+}
+.ticket-card:hover{
+	background: lightgrey;
+	opacity: 0.7;
+	transform: scale(1.03);
+}
+

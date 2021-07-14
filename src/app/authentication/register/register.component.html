@@ -53,19 +53,17 @@
 						       formControlName="password" required>
 					</mat-form-field>
 					<br>
-
 				</div>
 			</div>
-
-			<button mat-raised-button color="warn" type="submit" [disabled]="signUpForm.invalid">
-				Sign up
-			</button>
+			<br>
+			<div style="display: flex ; justify-content: center">
+				<button mat-raised-button color="warn" type="submit" [disabled]="signUpForm.invalid" >
+					Sign up
+				</button>
+			</div>
 		</form>
 	</mat-card-content>
 </mat-card>
-<div class="bot" (click)="click()">
+<div class="bot" (click)="click()" >
 	Sign in
 </div>
-
-<br>
-{{signUpForm.value | json}}

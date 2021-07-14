@@ -16,10 +16,10 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 
 //written modules components and services
 import { UserComponent } from './pages/user/user.component';
-import { EventService } from './core/event.service';
+import { EventService } from './app-service/event.service';
 import { EventComponent } from './pages/event/event.component';
-import { AuthService } from './core/auth.service';
-import { UserService } from './core/user.service';
+import { AuthService } from './app-service/auth.service';
+import { UserService } from './app-service/user.service';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { HomepageModule } from './pages/homepage/homepage.module';
 import { AdminLayoutModule} from './admin-layout/admin-layout.module';

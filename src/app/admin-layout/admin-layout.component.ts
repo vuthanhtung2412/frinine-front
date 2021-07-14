@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute,Router,ParamMap} from '@angular/router';
 import { User } from '../interfaces/user';
-import { UserService} from '../core/user.service';
-import { AuthService} from '../core/auth.service';
-import { DebugService} from '../core/debug.service';
+import { UserService} from '../app-service/user.service';
+import { AuthService} from '../app-service/auth.service';
+import { DebugService} from '../app-service/debug.service';
 
 @Component({
   selector: 'app-admin-layout',
@@ -12,6 +12,7 @@ import { DebugService} from '../core/debug.service';
 })
 export class AdminLayoutComponent implements OnInit {
 
+  debug = false;
   showSubmenu: boolean = false;
   id : number
   //user : User ;

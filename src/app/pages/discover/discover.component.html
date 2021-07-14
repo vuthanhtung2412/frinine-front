@@ -1,0 +1,36 @@
+<div
+		fxLayout="row wrap"
+		fxLayout.lt-sm="column"
+		fxLayoutGap="20px"
+		fxLayoutAlign="flex-start"
+>
+	<mat-card *ngFor="let e of events" class='event-card'
+	          fxFlex="0 1 calc(25% - 20px)"
+	          fxFlex.lt-md="0 1 calc(50% - 20px)"
+	          fxFlex.lt-sm="100%"
+	          (click)="toEvent(e.id)"
+	>
+		<mat-list>
+			<div> <h1 class='header'> {{e.name}} </h1> </div>
+			<mat-list-item>
+				<mat-icon mat-list-icon>room</mat-icon>
+				<div mat-line> Location </div>
+				<div mat-line >{{e.location}}</div>
+			</mat-list-item>
+		</mat-list>
+	</mat-card>
+
+
+	<!-- Load more content -->
+	<mat-card class="more-card"
+	          fxFlex="0 1 calc(25% - 20px)"
+	          fxFlex.lt-md="0 1 calc(50% - 20px)"
+	          fxFlex.lt-sm="100%"
+	>
+		<span
+				style="text-transform: uppercase ; font-size: 1.5rem; font-weight: bold; color: gray">
+			More Events
+		</span>
+
+	</mat-card>
+</div>

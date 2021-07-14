@@ -1,0 +1,47 @@
+.example-sidenav-content {
+	height: 100%;
+}
+
+.example-sidenav {
+	padding: 3px;
+}
+
+.header-font{
+	font-weight: bold;
+	text-transform: uppercase;
+	padding-left: 1rem;
+	color: #ececec;
+	font-size: 1.5rem;
+	letter-spacing: 0.3ch;
+	width: 100%;
+}
+mat-toolbar{
+	z-index: 2;
+	position: fixed;
+	top: 0;
+	height: 4rem;
+}
+.sidenavItem{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.menu-button {
+	transition: 300ms ease-in-out;
+	transform: rotate(0deg);
+}
+.menu-button.rotated {
+	transform: rotate(180deg);
+}
+.submenu {
+	overflow-y: hidden;
+	transition: max-height 300ms ease,transform 300ms ease;
+	max-height: 0;
+	transform: scaleY(0);
+	transform-origin: top;
+	padding-left: 30px;
+}
+.submenu.expanded {
+	max-height: 8rem;
+	transform: scaleY(1);
+}
+

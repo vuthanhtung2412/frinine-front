@@ -1,0 +1,101 @@
+<mat-toolbar color = 'primary' style="padding-right: 20px">
+	<button mat-icon-button (click)="showFiller = !showFiller"><mat-icon>menu</mat-icon></button>
+	<h1 class="header-font">Frinine</h1>
+	<div>
+		<button mat-mini-fab color="primary" aria-label="Info Perso" [matMenuTriggerFor]="PersoInfo" >
+			<mat-icon>account_circle</mat-icon>
+		</button>
+		<button mat-mini-fab color="primary" aria-label="Logout" style="margin: 0 15px " (click)="logout()">
+			<mat-icon>logout</mat-icon>
+		</button>
+	</div>
+</mat-toolbar>
+
+<mat-menu #PersoInfo="matMenu" xPosition="before">
+	<mat-list style = " padding: 20px">
+		<div> <h1 style="border-bottom: 3px solid #000"> Personal Informations </h1> </div>
+		<mat-list-item>
+			<mat-icon mat-list-icon>perm_identity</mat-icon>
+			<div mat-line>Name</div>
+			<div mat-line>name</div>
+		</mat-list-item>
+		<mat-list-item>
+			<mat-icon mat-list-icon>email</mat-icon>
+			<div mat-line>Gmail</div>
+			<div mat-line>gmail</div>
+		</mat-list-item>
+		<mat-list-item>
+			<mat-icon mat-list-icon>password</mat-icon>
+			<div mat-line> Password </div>
+			<div mat-line >password</div>
+		</mat-list-item>
+	</mat-list>
+</mat-menu>
+
+<mat-drawer-container style="background: white" autosize>
+	<mat-drawer #drawer class="example-sidenav" mode="side" style = 'position: fixed; top: 4rem' opened >
+		<mat-nav-list>
+			<mat-list-item (click)="toDashboard()" >
+				<span class="sidenavItem" *ngIf="showFiller" >Dashboard</span>
+				<mat-icon mat-list-icon>dashboard</mat-icon>
+			</mat-list-item>
+			<mat-list-item>
+				<span class="sidenavItem" *ngIf="showFiller" >Sells</span>
+				<mat-icon mat-list-icon>confirmation_number</mat-icon>
+			</mat-list-item>
+			<mat-list-item>
+				<span class="sidenavItem" *ngIf="showFiller">CRM</span>
+				<mat-icon mat-list-icon>supervisor_account</mat-icon>
+			</mat-list-item>
+			<mat-list-item>
+				<span class="sidenavItem" *ngIf="showFiller" >Calendar</span>
+				<mat-icon mat-list-icon>event_note</mat-icon>
+			</mat-list-item>
+			<mat-list-item (click)="showSubmenu = !showSubmenu" >
+				<span class="sidenavItem" *ngIf="showFiller" style="width: 9rem; display: flex; align-items: center">
+					Interaction
+					<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="showFiller" style="position: absolute; right: 10px">expand_more</mat-icon>
+				</span>
+				<mat-icon mat-list-icon>dynamic_feed</mat-icon>
+			</mat-list-item>
+			<div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="showFiller">
+				<mat-list-item>
+					<span class="sidenavItem" *ngIf="showFiller" >Facebook</span>
+					<mat-icon mat-list-icon>facebook</mat-icon>
+				</mat-list-item>
+				<mat-list-item>
+					<span class="sidenavItem" *ngIf="showFiller" >Web</span>
+					<mat-icon mat-list-icon>web</mat-icon>
+				</mat-list-item>
+			</div>
+
+			<mat-list-item (click)="toDiscover()">
+				<span class="sidenavItem" *ngIf="showFiller" >Discover</span>
+				<mat-icon mat-list-icon>explore</mat-icon>
+			</mat-list-item>
+		</mat-nav-list>
+	</mat-drawer>
+
+	<section style="height: 4rem"></section>
+
+	<div style="display: flex; align-content: center; justify-content: center" *ngIf="debug">
+		<button mat-button color="primary" (click)="printAuth()">printAuth</button>
+		<button mat-button color="accent">Click interaction</button>
+		<button mat-button color="warn">Warn</button>
+	</div>
+
+	<div style="position: fixed ; bottom: 30px ; right: 30px; z-index: 7">
+		<button mat-fab color="primary" aria-label="Example icon button with a bookmark icon"
+		        (click)="debug =!debug">
+			<mat-icon>bug_report</mat-icon>
+		</button>
+	</div>
+
+	<br>
+
+	<div class="example-sidenav-content">
+		<div style="margin: 1rem">
+			<router-outlet style="z-index: 0 "></router-outlet>
+		</div>
+	</div>
+</mat-drawer-container>
