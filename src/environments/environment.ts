@@ -14,7 +14,7 @@ export const environment = {
     measurementId: "G-0CG2MF99G9"}
 };
 
-/*<!-- The core Firebase JS SDK is always required and must be listed first -->
+/*<!-- The app-service Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
