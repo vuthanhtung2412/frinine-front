@@ -25,6 +25,7 @@
     "@angular/router": "~10.1.5",
     "chart.js": "^3.3.2",
     "firebase": "^7.0 || ^8.0",
+    "libphonenumber-js": "^1.9.22",
     "ngx-mat-intl-tel-input": "^4.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
