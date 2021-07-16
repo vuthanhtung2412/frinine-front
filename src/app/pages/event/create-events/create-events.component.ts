@@ -2,14 +2,14 @@ import { Component, OnInit,ViewChild, ElementRef } from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {Location} from '@angular/common';
-import {Event} from '../../interfaces/event';
-import {Ticket} from '../../interfaces/ticket';
+import {Event} from '../../../interfaces/event';
+import {Ticket} from '../../../interfaces/ticket';
 
 //Dialog imports
 import {MatDialog} from '@angular/material/dialog';
 import {SucessDialogComponent} from './sucess-dialog/sucess-dialog.component';
-import {AuthService} from '../../app-service/auth.service';
-import {EventService} from '../../app-service/event.service';
+import {AuthService} from '../../../app-service/auth.service';
+import {EventService} from '../../../app-service/event.service';
 
 
 // @ts-ignore
@@ -54,20 +54,8 @@ export class CreateEventsComponent implements OnInit {
       ],
       offline: [true],
       online: [false],
-      date: [null, Validators.required],
-      time: [null, Validators.required],
-      durationD: [0, [
-          Validators.max(5),
-          Validators.min(0)
-      ]],
-      durationH: [0, [
-          Validators.max(23),
-          Validators.min(0)
-      ]],
-      durationM: [0,[
-          Validators.min(0),
-          Validators.max(59)
-      ]],
+      from: [null, Validators.required],
+      to: [null, Validators.required],
       location:['',Validators.required],
       link: [''],
       invPlaces: [0],
@@ -145,9 +133,8 @@ export class CreateEventsComponent implements OnInit {
     this.event.name = this.createEventForm.get('name').value
     this.event.email = this.createEventForm.get('email').value
     this.event.tel = this.createEventForm.get('tel').value
-    this.event.date = this.createEventForm.get('date').value
-    this.event.time = this.createEventForm.get('time').value
-    this.event.duration = {days: this.createEventForm.get('durationD').value, hours: this.createEventForm.get('durationH').value, minutes: this.createEventForm.get('durationM').value}
+    this.event.from = new Date(this.createEventForm.get('from').value)
+    this.event.to = new Date(this.createEventForm.get('to').value)
     this.event.location = this.createEventForm.get('location').value
     this.event.link = this.createEventForm.get('location').value
     this.event.invPlaces = this.createEventForm.get('invPlaces').value

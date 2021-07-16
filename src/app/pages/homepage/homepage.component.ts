@@ -80,11 +80,6 @@ export class HomepageComponent implements OnInit {
   addEvents(){
     this.router.navigate(['menu/add-event']).then()
   }
-
-  toEvent(id){
-    this.router.navigate( ['menu/event',id]).then()
-  }
-
   toEventManagement(id){
     this.router.navigate( ['menu/event-management',id]).then()
   }

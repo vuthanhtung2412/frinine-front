@@ -14,7 +14,7 @@
 </mat-grid-list>
 <mat-grid-list cols="7" rowHeight="2:1" gutterSize="0">
 	<mat-grid-tile *ngFor="let num of arr, let i = index" class="date-tile"
-	               [ngClass]="{'selectedEvent' : i-days[0].getDay()+1 == event.date.getDate() && checkMY}"
+	               [ngClass]="{'selectedEvent' : i-days[0].getDay()+1 == event.from.getDate() && checkMY}"
 	               style=" display: flex; justify-content: center; align-items: center" >
 		<div *ngIf="i>=this.days[0].getDay() && i< this.days.length + this.days[0].getDay()"
 		     style="font-weight: bold; font-size: 24px; color: gray">

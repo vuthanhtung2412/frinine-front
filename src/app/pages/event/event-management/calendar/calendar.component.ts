@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Event} from '../../../interfaces/event';
+import {Event} from '../../../../interfaces/event';
 
 @Component({
   selector: 'app-calendar',
@@ -25,12 +25,12 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit(): void {
     this.fillDays()
-    this.checkMY = this.year==this.event.date.getFullYear() && this.month==this.event.date.getMonth()
+    this.checkMY = this.year==this.event.from.getFullYear() && this.month==this.event.from.getMonth()
     //console.log(this.event.date.getDate())
   }
 
   checkMonthYear(){
-    this.checkMY = this.year==this.event.date.getFullYear() && this.month==this.event.date.getMonth()
+    this.checkMY = this.year==this.event.from.getFullYear() && this.month==this.event.from.getMonth()
   }
 
   getMonth():string{

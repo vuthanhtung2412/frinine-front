@@ -23,7 +23,6 @@ export class AuthService {
   	// Realtime authentication listener
   	this.auth.onAuthStateChanged(frinineUser =>{
   		if(frinineUser){
-  			console.log(frinineUser)
 		    console.log(frinineUser.uid)
 	    }else{
   			console.log('not logged in ');

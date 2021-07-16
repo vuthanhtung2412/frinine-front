@@ -106,24 +106,5 @@
         </mat-card>
       </div>
     </div>
-
-
-    <!--EVENTS-->
-    <div *ngFor="let e of events">
-      <div class="col p-2">
-        <mat-card class='event-card'
-                  (click)="toEvent(e.id)"
-        >
-          <mat-list>
-            <div> <h1 class='header'> {{e.name}} </h1> </div>
-            <mat-list-item>
-              <mat-icon mat-list-icon>room</mat-icon>
-              <div mat-line> Location </div>
-              <div mat-line >{{e.location}}</div>
-            </mat-list-item>
-          </mat-list>
-        </mat-card>
-      </div>
-    </div>
   </div>
 </div>

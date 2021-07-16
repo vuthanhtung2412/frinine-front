@@ -12,7 +12,6 @@ import { DebugService} from '../app-service/debug.service';
 })
 export class AdminLayoutComponent implements OnInit {
 
-  debug = false;
   showSubmenu: boolean = false;
   id : number
   //user : User ;
@@ -32,8 +31,8 @@ export class AdminLayoutComponent implements OnInit {
   }
 
   toDiscover(){
-    this.router.navigate(['menu/discover'])
   }
+
   toDashboard(){
     this.authService.auth.currentUser
         .then(u => this.router.navigate(['menu/homepage/'+u.uid]))
@@ -42,9 +41,5 @@ export class AdminLayoutComponent implements OnInit {
   logout(){
     this.authService.logOut()
     this.router.navigate([''])
-  }
-
-  printAuth(){
-    this.debugService.printAuth()
   }
 }

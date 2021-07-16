@@ -1,16 +1,12 @@
-import {User} from './user'
-import {Time} from '@angular/common';
 import {Ticket} from './ticket';
-import {Duration} from './duration';
 
 export interface Event{
 	id? : string;
 	name?: string;
 	email? : string;
 	tel? : string;
-	date? : Date;
-	time?: Time;
-	duration ?: Duration;
+	from? : Date;
+	to ? : Date;
 	location?: string;
 	link? : string;
 	invPlaces ?: number;
@@ -19,4 +15,25 @@ export interface Event{
 	organiserID ?: string;
 	ticketType?: Ticket[]
 	paymentMeth ?: string[];
+}
+export const defaultEvent: Event = {
+	id : null,
+	name : 'DEFAULT EVENT',
+	email : 'example-gmail@gmail.com',
+	tel: '000-000-0000',
+	from: new Date(),
+	to : new Date(),
+	location: 'DEFAULT LOCATION',
+	link: 'DEFAULT LINK',
+	invPlaces: 0,
+	capacity: 0,
+	organiserID: '00000000000',
+	ticketType: [
+		{
+			name: 'DEFAULT TICKET',
+			price: 0,
+			description: 'LOADING'
+		}
+	],
+	paymentMeth: []
 }

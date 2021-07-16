@@ -15,27 +15,25 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 
 
 //written modules components and services
-import { UserComponent } from './pages/user/user.component';
 import { EventService } from './app-service/event.service';
-import { EventComponent } from './pages/event/event.component';
 import { AuthService } from './app-service/auth.service';
 import { UserService } from './app-service/user.service';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { HomepageModule } from './pages/homepage/homepage.module';
 import { AdminLayoutModule} from './admin-layout/admin-layout.module';
+import { EventModule} from './pages/event/event.module';
 
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		EventComponent,
-		UserComponent,
 	],
 	imports: [
 		// written modules  
 		AuthenticationModule,
 		HomepageModule,
 		AdminLayoutModule,
+		EventModule,
 
 		// Dependencies modules 
 		BrowserModule,
