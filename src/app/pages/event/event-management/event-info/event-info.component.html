@@ -1,135 +1,163 @@
-<mat-card>
-	<form [formGroup]="updateEventForm" (ngSubmit)="submitUpdateEvent()">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<mat-list>
-						<mat-list-item>
-							<mat-icon mat-list-icon>local_activity</mat-icon>
-							<div mat-line>
-								<mat-form-field>
-									<mat-label>Event's name</mat-label>
-									<input matInput name="Event's name" formControlName="name" value="{{updateEventForm.get('name').value}}" required>
-									<button *ngIf="updateEventForm.get('name').value" matSuffix mat-icon-button aria-label="Clear" (click)="updateEventForm.patchValue({name:''})">
-										<mat-icon>close</mat-icon>
-									</button>
-								</mat-form-field>
-							</div>
-						</mat-list-item>
-						<br>
-						<mat-list-item>
-							<mat-icon mat-list-icon>room</mat-icon>
-							<div mat-line>
-								<mat-form-field>
-									<mat-label>Location</mat-label>
-									<input matInput formControlName="location" value="{{updateEventForm.get('location').value}}" required>
-									<button *ngIf="updateEventForm.get('location').value" matSuffix mat-icon-button aria-label="Clear" (click)="updateEventForm.patchValue({location:''})">
-										<mat-icon>close</mat-icon>
-									</button>
-								</mat-form-field>
-							</div>
-						</mat-list-item>
-						<br>
-						<mat-list-item>
-							<mat-icon mat-list-icon>link</mat-icon>
-							<div mat-line>
-								<mat-form-field>
-									<mat-label>Meeting Link</mat-label>
-									<input matInput formControlName="link" value="{{updateEventForm.get('link').value}}" required>
-									<button *ngIf="updateEventForm.get('link').value" matSuffix mat-icon-button aria-label="Clear" (click)="updateEventForm.patchValue({link:''})">
-										<mat-icon>close</mat-icon>
-									</button>
-								</mat-form-field>
-							</div>
-						</mat-list-item>
-						<br>
-						<mat-list-item>
-							<div mat-line><h2>Schedule</h2></div>
-						</mat-list-item>
-						<mat-list-item>
-							<mat-icon mat-list-icon>chevron_right</mat-icon>
-							<div mat-line>
-								<mat-form-field>
-									<mat-label>From :</mat-label>
-									<input matInput type="datetime-local" formControlName="from">
-								</mat-form-field>
-							</div>
-						</mat-list-item>
-						<mat-list-item style="margin-bottom: 15px">
-							<mat-icon mat-list-icon>chevron_right</mat-icon>
-							<div mat-line>
-								<mat-form-field>
-									<mat-label>To :</mat-label>
-									<input matInput type="datetime-local" formControlName="to">
-								</mat-form-field>
-							</div>
-						</mat-list-item>
-					</mat-list>
-				</div>
+<div class="shadow p-3 mb-5 bg-white rounded" style="margin-top: 15px">
+	<mat-card>
+		<form [formGroup]="updateEventForm" >
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<mat-list>
+							<mat-list-item>
+								<mat-icon mat-list-icon>local_activity</mat-icon>
+								<div mat-line>
+									<mat-form-field>
+										<mat-label>Event's name</mat-label>
+										<input matInput name="Event's name" formControlName="name" value="{{updateEventForm.get('name').value}}" required>
+										<button *ngIf="updateEventForm.get('name').value" matSuffix mat-icon-button aria-label="Clear" (click)="updateEventForm.patchValue({name:''})">
+											<mat-icon>close</mat-icon>
+										</button>
+									</mat-form-field>
+								</div>
+							</mat-list-item>
+							<br>
+							<mat-list-item>
+								<mat-icon mat-list-icon>room</mat-icon>
+								<div mat-line>
+									<mat-form-field>
+										<mat-label>Location</mat-label>
+										<input matInput formControlName="location" value="{{updateEventForm.get('location').value}}" required>
+										<button *ngIf="updateEventForm.get('location').value" matSuffix mat-icon-button aria-label="Clear" (click)="updateEventForm.patchValue({location:''})">
+											<mat-icon>close</mat-icon>
+										</button>
+									</mat-form-field>
+								</div>
+							</mat-list-item>
+							<br>
+							<mat-list-item>
+								<mat-icon mat-list-icon>link</mat-icon>
+								<div mat-line>
+									<mat-form-field>
+										<mat-label>Meeting Link</mat-label>
+										<input matInput formControlName="link" value="{{updateEventForm.get('link').value}}" required>
+										<button *ngIf="updateEventForm.get('link').value" matSuffix mat-icon-button aria-label="Clear" (click)="updateEventForm.patchValue({link:''})">
+											<mat-icon>close</mat-icon>
+										</button>
+									</mat-form-field>
+								</div>
+							</mat-list-item>
+							<br>
+							<mat-list-item>
+								<div mat-line><h2>Schedule :</h2></div>
+							</mat-list-item>
+							<mat-list-item>
+								<mat-icon mat-list-icon>chevron_right</mat-icon>
+								<div mat-line>
+									<mat-form-field>
+										<mat-label>From :</mat-label>
+										<input matInput type="datetime-local" formControlName="from">
+									</mat-form-field>
+								</div>
+							</mat-list-item>
+							<mat-list-item style="margin-bottom: 15px">
+								<mat-icon mat-list-icon>chevron_right</mat-icon>
+								<div mat-line>
+									<mat-form-field>
+										<mat-label>To :</mat-label>
+										<input matInput type="datetime-local" formControlName="to">
+									</mat-form-field>
+								</div>
+							</mat-list-item>
 
-				<div class="col">
-					<mat-list>
-						<mat-list-item>
-							<mat-icon mat-list-icon>mail</mat-icon>
-							<div mat-line>
-								<mat-form-field>
-									<mat-label>Organiser's Contact Mail</mat-label>
-									<input matInput formControlName="email" value="{{updateEventForm.get('email').value}}" required>
-									<button *ngIf="updateEventForm.get('email').value" matSuffix mat-icon-button aria-label="Clear" (click)="updateEventForm.patchValue({email:''})">
-										<mat-icon>close</mat-icon>
-									</button>
-								</mat-form-field>
-							</div>
-						</mat-list-item>
-						<br>
-						<mat-list-item>
-							<mat-icon mat-list-icon>phone</mat-icon>
-							<div mat-line>
-								<mat-form-field>
-									<mat-label>Organiser's Contact Number</mat-label>
-									<input matInput formControlName="tel" value="{{updateEventForm.get('tel').value}}" required>
-									<button *ngIf="updateEventForm.get('tel').value" matSuffix mat-icon-button aria-label="Clear" (click)="updateEventForm.patchValue({tel:''})">
-										<mat-icon>close</mat-icon>
-									</button>
-								</mat-form-field>
-							</div>
-						</mat-list-item>
-						<br>
-						<mat-list-item>
-							<mat-icon mat-list-icon>event_seat</mat-icon>
-							<div mat-line>
-								<mat-form-field>
-									<mat-label># Total Seats</mat-label>
-									<input matInput type="number" formControlName="capacity" value="{{updateEventForm.get('capacity').value}}" required>
-								</mat-form-field>
-							</div>
-						</mat-list-item>
-						<br>
-						<mat-list-item>
-							<mat-icon mat-list-icon>chair</mat-icon>
-							<div mat-line>
-								<mat-form-field>
-									<mat-label># Seats For Guests</mat-label>
-									<input matInput type="number" formControlName="invPlaces" value="{{updateEventForm.get('invPlaces').value}}" required>
-								</mat-form-field>
-							</div>
-						</mat-list-item>
-						<mat-list-item>
-							<mat-icon mat-list-icon>chair_alt</mat-icon>
-							<div mat-line> # Seats Available</div>
-							<div mat-line>{{updateEventForm.get('capacity').value - updateEventForm.get('invPlaces').value - event.soldPlaces}}</div>
-						</mat-list-item>
-					</mat-list>
+						</mat-list>
+					</div>
+
+					<div class="col">
+						<mat-list>
+							<mat-list-item>
+								<mat-icon mat-list-icon>mail</mat-icon>
+								<div mat-line>
+									<mat-form-field>
+										<mat-label>Organiser's Contact Mail</mat-label>
+										<input matInput formControlName="email" value="{{updateEventForm.get('email').value}}" required>
+										<button *ngIf="updateEventForm.get('email').value" matSuffix mat-icon-button aria-label="Clear" (click)="updateEventForm.patchValue({email:''})">
+											<mat-icon>close</mat-icon>
+										</button>
+									</mat-form-field>
+								</div>
+							</mat-list-item>
+							<br>
+							<mat-list-item>
+								<mat-icon mat-list-icon>phone</mat-icon>
+								<div mat-line>
+									<mat-form-field>
+										<mat-label>Organiser's Contact Number</mat-label>
+										<input matInput formControlName="tel" value="{{updateEventForm.get('tel').value}}" required>
+										<button *ngIf="updateEventForm.get('tel').value" matSuffix mat-icon-button aria-label="Clear" (click)="updateEventForm.patchValue({tel:''})">
+											<mat-icon>close</mat-icon>
+										</button>
+									</mat-form-field>
+								</div>
+							</mat-list-item>
+							<br>
+							<mat-list-item>
+								<mat-icon mat-list-icon>event_seat</mat-icon>
+								<div mat-line>
+									<mat-form-field>
+										<mat-label># Total Seats</mat-label>
+										<input matInput type="number" formControlName="capacity" value="{{updateEventForm.get('capacity').value}}" required>
+									</mat-form-field>
+								</div>
+							</mat-list-item>
+							<br>
+							<mat-list-item>
+								<mat-icon mat-list-icon>chair</mat-icon>
+								<div mat-line>
+									<mat-form-field>
+										<mat-label># Seats For Guests</mat-label>
+										<input matInput type="number" formControlName="invPlaces" value="{{updateEventForm.get('invPlaces').value}}" required>
+									</mat-form-field>
+								</div>
+							</mat-list-item>
+							<mat-list-item>
+								<mat-icon mat-list-icon>chair_alt</mat-icon>
+								<div mat-line> # Seats Available</div>
+								<div mat-line>{{updateEventForm.get('capacity').value - updateEventForm.get('invPlaces').value - event.soldPlaces}}</div>
+							</mat-list-item>
+						</mat-list>
+					</div>
 				</div>
 			</div>
-			<div style="display: flex; justify-content: center">
-				<button type="submit" color="primary" [disabled]="updateDisabled" mat-flat-button> Update Event</button>
-			</div>
+		</form>
+		<div style="display: flex; justify-content: center; align-items: center">
+			<mat-form-field style="margin-right:5% ;width: 60%" appearance="fill">
+				<mat-label>Choose Your Payment Methods</mat-label>
+				<mat-chip-list #chipList aria-label="Fruit selection">
+					<mat-chip *ngFor="let fruit of chosenMethods" [selectable]="selectable" [removable]="removable" (removed)="remove(fruit)">
+						{{fruit}}
+						<mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+					</mat-chip>
+					<input *ngIf="input"
+					       placeholder="New payment method..."
+					       #payInput
+					       [formControl]="payCtrl"
+					       [matAutocomplete]="auto"
+					       [matChipInputFor]="chipList">
+				</mat-chip-list>
+				<mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+					<mat-option *ngFor="let fruit of availableMethods" [value]="fruit">
+						{{fruit}}
+					</mat-option>
+				</mat-autocomplete>
+			</mat-form-field>
 		</div>
-	</form>
-</mat-card>
-<!--
-{{updateEventForm.value | json}}
-<br><br>
-{{event | json}}
--->
+
+		<br>
+
+		<div style="display: flex; justify-content: center">
+			<button (click)="submitUpdateEvent()" color="primary" [disabled]="updateDisabled" mat-flat-button> Update Event</button>
+		</div>
+	</mat-card>
+	<!--
+	{{updateEventForm.value | json}}
+	<br><br>
+	{{event | json}}
+	-->
+</div>
