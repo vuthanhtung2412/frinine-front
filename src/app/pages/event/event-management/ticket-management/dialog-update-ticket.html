@@ -29,7 +29,9 @@
 	<button matDialogClose mat-flat-button style="margin-right: 5%; font-weight: bold; background: #ececec">
 		CANCEL
 	</button>
-	<button color="primary" mat-flat-button style=" font-weight: bold; margin-right: 3%"
+	<button [disabled]="updateForm.invalid"
+	        matDialogClose
+			color="primary" mat-flat-button style=" font-weight: bold; margin-right: 3%"
 	        (click)="updateTicket()">
 		UPDATE
 	</button>
