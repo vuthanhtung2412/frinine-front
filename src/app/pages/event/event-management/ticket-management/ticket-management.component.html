@@ -2,14 +2,16 @@
 	<div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
 		<!-- ADD TICKET -->
 		<div class="col p-2 box">
-			<mat-card class = 'ticket-card' style="display: flex; justify-content: center; align-items: center">
+			<mat-card class = 'ticket-card' style="display: flex; justify-content: center; align-items: center"
+			          (click)="openCreateTicketDialog()"
+			>
 				<mat-icon style="transform: scale(5); color : gray">add</mat-icon>
 			</mat-card>
 		</div>
 
 		<!-- TICKET CARDS -->
-		<div *ngFor="let t of ticketType" class="col p-2 box" >
-			<mat-card class="ticket-card">
+		<div *ngFor="let t of ticketType; let i = index" class="col p-2 box" >
+			<mat-card class="ticket-card" (click)="openUpdateTicketDialog(i)">
 				<mat-card-title style="border-bottom: #555251 solid 1px">{{t.name}}</mat-card-title>
 				<mat-list>
 					<mat-list-item>
@@ -29,17 +31,8 @@
 		</div>
 	</div>
 	<br>
-	<mat-accordion>
-		<mat-expansion-panel>
-			<mat-expansion-panel-header>
-				<mat-panel-title style="font-weight: bold">
-					MODIFY
-				</mat-panel-title>
-				<mat-panel-description>
-					CLICK TO MODIFY TICKET INFOS
-				</mat-panel-description>
-			</mat-expansion-panel-header>
-			<p>This is the primary content of the panel.</p>
-		</mat-expansion-panel>
-	</mat-accordion>
+
+	<!--
+	<button mat-flat-button color="primary" (click)="printTickets()" >print tickets</button>
+	-->
 </div>

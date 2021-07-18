@@ -87,7 +87,7 @@ export class EventInfoComponent implements OnInit, OnChanges{
     this.updateEventForm.patchValue({from: new Date(this.updateEventForm.get('from').value)})
     this.updateEventForm.patchValue({to: new Date(this.updateEventForm.get('to').value)})
     this.updateEventForm.addControl('paymentMeth', this.payCtrl )
-    this.eventService.updateUser(this.updateEventForm.value,this.id)
+    this.eventService.updateEvent(this.updateEventForm.value,this.id)
         .then(() => {
           window.location.reload()
         })

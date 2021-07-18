@@ -50,7 +50,7 @@ export class EventService {
       return of(MockEventsDb)
   }
 
-  updateUser(updates, id) {
+  updateEvent(updates, id) {
     return this.db
         .collection("events")
         .doc(id)
