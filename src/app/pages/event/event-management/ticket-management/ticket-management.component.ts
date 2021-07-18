@@ -24,6 +24,7 @@ export class TicketManagementComponent implements OnInit, OnChanges {
   constructor(
       private route: ActivatedRoute,
       private dialog : MatDialog,
+      private eventService : EventService
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +37,15 @@ export class TicketManagementComponent implements OnInit, OnChanges {
 
   printTickets(){
     console.log(this.ticketType)
+  }
+
+  deleteTicket(i){
+    console.log(this.ticketType[i].name + ' is deleted')
+    this.ticketType.splice(i,1)
+    this.eventService.updateEvent({ticketType: this.ticketType}, id)
+        .then(r => {
+
+        })
   }
 
   openUpdateTicketDialog(index){

@@ -10,23 +10,34 @@
 		</div>
 
 		<!-- TICKET CARDS -->
-		<div *ngFor="let t of ticketType; let i = index" class="col p-2 box" >
-			<mat-card class="ticket-card" (click)="openUpdateTicketDialog(i)">
-				<mat-card-title style="border-bottom: #555251 solid 1px">{{t.name}}</mat-card-title>
-				<mat-list>
-					<mat-list-item>
-						<mat-icon mat-list-icon>description</mat-icon>
-						<div mat-line> Description</div>
-						<div mat-line>{{t.description}}
-							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-						</div>
-					</mat-list-item>
-					<mat-list-item>
-						<mat-icon mat-list-icon>paid</mat-icon>
-						<div mat-line> Price</div>
-						<div mat-line>{{t.price}}</div>
-					</mat-list-item>
-				</mat-list>
+		<div *ngFor="let t of ticketType; let i = index" class="col p-2 box">
+			<mat-card class="ticket-card">
+				<mat-card-title style="border-bottom: #555251 solid 1px">
+					{{t.name}}
+					<!--DELETE BUTTON-->
+					<button mat-mini-fab aria-label="delete this ticket"
+					        style="position: absolute; right: 5%; transform: scale(0.7)"
+					        (click)="deleteTicket(i)"
+					        color="warn">
+						<mat-icon>delete</mat-icon>
+					</button>
+				</mat-card-title>
+				<div (click)="openUpdateTicketDialog(i)">
+					<mat-list>
+						<mat-list-item>
+							<mat-icon mat-list-icon>description</mat-icon>
+							<div mat-line> Description</div>
+							<div mat-line>{{t.description}}
+								Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+							</div>
+						</mat-list-item>
+						<mat-list-item>
+							<mat-icon mat-list-icon>paid</mat-icon>
+							<div mat-line> Price</div>
+							<div mat-line>{{t.price}}</div>
+						</mat-list-item>
+					</mat-list>
+				</div>
 			</mat-card>
 		</div>
 	</div>
