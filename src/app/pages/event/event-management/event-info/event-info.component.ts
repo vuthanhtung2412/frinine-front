@@ -1,7 +1,7 @@
 import { Component, OnInit, OnChanges, SimpleChanges, ElementRef, ViewChild } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
-import {Event} from '../../../../interfaces/event';
+import {FrinineEvent} from '../../../../interfaces/frinineEvent';
 import {EventService} from '../../../../app-service/event.service';
 import {Location} from '@angular/common';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
@@ -16,7 +16,7 @@ export class EventInfoComponent implements OnInit, OnChanges{
 
   updateDisabled = true ;
   updateEventForm : FormGroup;
-  event : Event;
+  event : FrinineEvent;
   id: string;
 
   // IN ORDER TO DISPLAY VALUE IN INPUT CORRECTLY

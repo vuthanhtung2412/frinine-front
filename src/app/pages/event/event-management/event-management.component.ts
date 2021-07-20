@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {defaultEvent, Event} from '../../../interfaces/event';
+import {defaultEvent, FrinineEvent} from '../../../interfaces/frinineEvent';
 import {EventService} from '../../../app-service/event.service';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
@@ -11,7 +11,7 @@ import {FormBuilder} from '@angular/forms';
 })
 export class EventManagementComponent implements OnInit {
 
-  event : Event = defaultEvent;
+  event : FrinineEvent = defaultEvent;
   dayFrom : string;
   dayTo: string;
   id: string;

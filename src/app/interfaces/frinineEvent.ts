@@ -1,6 +1,6 @@
 import {Ticket} from './ticket';
 
-export interface Event{
+export interface FrinineEvent {
 	id? : string;
 	name?: string;
 	email? : string;
@@ -16,7 +16,7 @@ export interface Event{
 	ticketType?: Ticket[]
 	paymentMeth ?: string[];
 }
-export const defaultEvent: Event = {
+export const defaultEvent: FrinineEvent = {
 	id : null,
 	name : 'DEFAULT EVENT',
 	email : 'example-gmail@gmail.com',
