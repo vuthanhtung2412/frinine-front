@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {FrinineEvent, defaultEvent} from '../interfaces/event';
-import {MockEventsDb} from '../interfaces/mock-events';
-import {Observable, of, Subject} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
@@ -73,10 +72,6 @@ export class EventService {
 			.add(e)
 			.then(response => { console.log(response); }, error => reject(error));
 	});
-  }
-
-  getEvents(): Observable<FrinineEvent[]>{
-		return of(MockEventsDb);
   }
 
   updateUser(updates, id) {

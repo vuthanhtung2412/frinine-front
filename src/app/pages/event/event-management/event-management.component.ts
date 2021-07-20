@@ -11,8 +11,8 @@ import {FormBuilder} from '@angular/forms';
 })
 export class EventManagementComponent implements OnInit {
 
-  event: FrinineEvent = defaultEvent;
-  dayFrom: string;
+  event : FrinineEvent = defaultEvent;
+  dayFrom : string;
   dayTo: string;
   id: string;
 
