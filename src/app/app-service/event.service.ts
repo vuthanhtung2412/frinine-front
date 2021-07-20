@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Event} from '../interfaces/event';
+import {FrinineEvent} from '../interfaces/frinineEvent';
 import {MockEventsDb} from '../interfaces/mock-events';
 import {Observable, of} from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -37,7 +37,7 @@ export class EventService {
         .delete();
   }
 
-  createEvent(e: Event){
+  createEvent(e: FrinineEvent){
     return new Promise<any>((resolve, reject) =>{
       this.db
           .collection("events")
@@ -46,7 +46,7 @@ export class EventService {
     });
   }
 
-  getEvents(): Observable<Event[]>{
+  getEvents(): Observable<FrinineEvent[]>{
       return of(MockEventsDb)
   }
 

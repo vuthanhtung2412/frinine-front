@@ -22,13 +22,20 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { HomepageModule } from './pages/homepage/homepage.module';
 import { AdminLayoutModule} from './admin-layout/admin-layout.module';
 import { EventModule} from './pages/event/event.module';
+import { PaymentComponent } from './pages/payment/payment.component';
 
+
+let paypal;
+
+let ng;
 
 @NgModule({
 	declarations: [
 		AppComponent,
+		PaymentComponent,
 	],
 	imports: [
+
 		// written modules  
 		AuthenticationModule,
 		HomepageModule,

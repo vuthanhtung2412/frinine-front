@@ -1,6 +1,6 @@
 import { Component, OnInit , Input } from '@angular/core';
 import { User } from '../../interfaces/user'
-import { Event} from '../../interfaces/event';
+import { FrinineEvent} from '../../interfaces/frinineEvent';
 import { Location } from '@angular/common';
 import {ActivatedRoute,Router} from '@angular/router';
 
@@ -27,7 +27,7 @@ export class HomepageComponent implements OnInit {
   isFlipped : boolean[];
 
   user : User;
-  events: Event[] = [];
+  events: FrinineEvent[] = [];
   id : string;
   birthday: any; //Convert birhtday from timestamp type to date type
 

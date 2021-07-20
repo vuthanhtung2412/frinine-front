@@ -2,7 +2,7 @@ import { Component, OnInit,ViewChild, ElementRef } from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {Location} from '@angular/common';
-import {Event} from '../../../interfaces/event';
+import {FrinineEvent} from '../../../interfaces/frinineEvent';
 import {Ticket} from '../../../interfaces/ticket';
 
 //Dialog imports
@@ -23,7 +23,7 @@ import {EventService} from '../../../app-service/event.service';
 })
 export class CreateEventsComponent implements OnInit {
 
-  event: Event = {}
+  event: FrinineEvent = {}
   createEventForm: FormGroup;
   createTicketForm: FormGroup; //FORM GROUP FOR THE MAIN TICKET TYPE
   paymentMethodeForm: FormGroup;
