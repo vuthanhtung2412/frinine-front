@@ -57,3 +57,33 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Deployment
+
+1. Check if prod environement is configured properly in `src/environments/environments.prod.ts`
+
+```typescript
+export const environment = {
+  production: true,
+  firebase: {
+	apiKey: '...',
+	authDomain: 'frinine-60e07.firebaseapp.com',
+	projectId: '...',
+	storageBucket: 'frinine-60e07.appspot.com',
+	messagingSenderId: '...',
+	appId: '...',
+	measurementId: '...'}
+};
+```
+
+2. Build the project for **production** mode (to compress files)
+
+```bash
+ng build --prod --aot
+```
+
+3. Deploy to Firebase
+
+```
+firebase deploy --project frinine-60e07
+```
