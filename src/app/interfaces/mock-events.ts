@@ -1,6 +1,6 @@
-import {Event} from './event';
+import {FrinineEvent} from './frinineEvent';
 
-export const MockEventsDb : Event[] =[
+export const MockEventsDb : FrinineEvent[] =[
 	{
 		id: '1',
 		name: 'Tung Event',

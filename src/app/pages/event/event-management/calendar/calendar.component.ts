@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Event} from '../../../../interfaces/event';
+import {FrinineEvent} from '../../../../interfaces/frinineEvent';
 
 @Component({
   selector: 'app-calendar',
@@ -9,7 +9,7 @@ import {Event} from '../../../../interfaces/event';
 })
 export class CalendarComponent implements OnInit {
 
-  event: Event
+  event: FrinineEvent
 
   weekdays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
   arr = Array(35).fill(0)
