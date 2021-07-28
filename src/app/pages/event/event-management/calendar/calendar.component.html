@@ -1,0 +1,26 @@
+<div class="shadow p-3 mb-5 bg-white rounded" style="margin-top: 15px">
+	<div>
+		<button mat-icon-button (click)="preMonth()">
+			<mat-icon>navigate_before</mat-icon>
+		</button>
+		{{getMonth()}}, {{year}}
+		<button mat-icon-button (click)="nextMonth()">
+			<mat-icon>navigate_next</mat-icon>
+		</button>
+	</div>
+	<mat-grid-list cols="7" rowHeight="5:1" gutterSize="0">
+		<mat-grid-tile *ngFor="let d of weekdays" style=" border: 1px solid lightgray; display: flex; justify-content: center; align-items: center" >
+			{{d}}
+		</mat-grid-tile>
+	</mat-grid-list>
+	<mat-grid-list cols="7" rowHeight="2:1" gutterSize="0">
+		<mat-grid-tile *ngFor="let num of arr, let i = index" class="date-tile"
+		               [ngClass]="{'selectedEvent' : i-days[0].getDay()+1 == event.from.getDate() && checkMY}"
+		               style=" display: flex; justify-content: center; align-items: center" >
+			<div *ngIf="i>=this.days[0].getDay() && i< this.days.length + this.days[0].getDay()"
+			     style="font-weight: bold; font-size: 24px; color: gray">
+				{{days[i-this.days[0].getDay()].getDate()}}
+			</div>
+		</mat-grid-tile>
+	</mat-grid-list>
+</div>

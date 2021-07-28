@@ -1,0 +1,241 @@
+<mat-horizontal-stepper linear #stepper> <!--linear-->
+	<mat-step [stepControl]="createEventForm">
+		<ng-template matStepLabel>CREATE EVENT</ng-template>
+		<h4 class="mat-display-1 stepHeader" >CREATE EVENT</h4>
+
+		<form [formGroup]="createEventForm">
+			<div class="container">
+				<div class="row">
+
+					<!-- First columns -->
+					<div class="col">
+						<mat-form-field>
+							<mat-label> Event's Name</mat-label>
+							<input matInput placeholder="My greatest event" formControlName="name" required>
+						</mat-form-field>
+						<br>
+
+						<mat-form-field>
+							<mat-label>Contact Mail</mat-label>
+							<input matInput type="email" placeholder="Contact Mail" formControlName="email" required>
+						</mat-form-field>
+						<br>
+
+						<mat-form-field>
+							<mat-label>Telephone</mat-label>
+							<span matPrefix>+33 &nbsp;</span>
+							<input type="tel" matInput placeholder="1 11 11 11 11" formControlName="tel" >
+						</mat-form-field>
+						<br> <br>
+
+						<h4>Schedule:</h4>
+						<mat-form-field >
+							<mat-label>from</mat-label>
+							<input matInput type="datetime-local" formControlName="from">
+						</mat-form-field>
+						<br>
+						<mat-form-field>
+							<mat-label>to</mat-label>
+							<input matInput type="datetime-local" formControlName="to">
+						</mat-form-field>
+
+					</div>
+
+					<!--Second columns -->
+					<div class="col">
+						<section>
+							<h4>Select your event's type:</h4>
+							<p><mat-checkbox color="primary" formControlName="offline">
+								Offline
+							</mat-checkbox></p>
+							<p><mat-checkbox color="primary" formControlName="online" >
+								Online
+							</mat-checkbox></p>
+						</section>
+
+						<div *ngIf="createEventForm.value['offline']">
+							<mat-form-field>
+								<mat-label>Location</mat-label>
+								<input matInput placeholder="Location" formControlName="location" required>
+							</mat-form-field>
+							<br>
+						</div>
+
+						<div *ngIf="createEventForm.value['online']">
+							<mat-form-field>
+								<mat-label>Link</mat-label>
+								<input matInput placeholder="Link" formControlName="link" required>
+							</mat-form-field>
+							<br>
+						</div>
+
+						<mat-form-field *ngIf="createEventForm.value['offline']" color="primary">
+							<input matInput type="number" placeholder="Capacity" name="Capacity" formControlName="capacity" required>
+						</mat-form-field>
+						<br>
+
+						<mat-form-field *ngIf="createEventForm.value['offline']" color="primary" class="full-width">
+							<input matInput type="number" placeholder="# Places For Invitations" name="# Places For Invitations" formControlName="invPlaces" required>
+						</mat-form-field>
+					</div>
+				</div>
+			</div>
+			<br>
+			<div style="display: flex; justify-content: flex-end;">
+				<button color="primary" mat-flat-button
+				        matStepperNext
+				        style="font-weight: bold">
+				        <!-- [disabled]="createEventForm.invalid"> --> Next
+				</button>
+			</div>
+		</form>
+		{{createEventForm.value | json}}
+	</mat-step>
+
+
+
+	<mat-step [stepControl]="createTicketForm">
+
+		<ng-template matStepLabel>CREATE TICKET</ng-template>
+		<h4 class="mat-display-1 stepHeader" style="margin-bottom: 10px">CREATE TICKET</h4>
+
+		<br>
+
+		<div style="border-bottom: 2px solid grey">
+		</div>
+		<br>
+
+		<!-- MAIN TICKET FORM CONTROL -->
+		<form [formGroup]="createTicketForm">
+			<div style="border-bottom: 2px solid lightgray">
+				<mat-form-field>
+					<mat-label>Name</mat-label>
+					<input matInput placeholder="Name of this ticket types" formControlName="name" required>
+				</mat-form-field>
+				<br>
+
+				<mat-form-field color="primary" class="full-width">
+					<input matInput type="number" placeholder="Price" name="Price" formControlName="price" required>
+				</mat-form-field>
+				<br><br>
+
+				<h3 style="margin-bottom: 10px ; font-size: 14px; font-weight: bold; text-transform: uppercase; color: grey">
+					Choose your ticket's design &nbsp;
+					<input id="file" type="file" class="inputfile">
+					<br>
+				</h3>
+				<br>
+
+				<mat-form-field appearance="fill" style="width:100%" >
+					<mat-label style="font-size: 16px; text-transform: uppercase">Ticket Description</mat-label>
+					<textarea matInput placeholder="Add Your Description" formControlName="description"></textarea>
+				</mat-form-field>
+				{{createTicketForm.value | json}}
+			</div>
+			<br>
+		</form>
+
+		<!-- OTHER TICKET OPTION FORM CONTROL -->
+		<form [formGroup]="optionalTicketGroup">
+			<div formArrayName="ticketTypes">
+				<div *ngFor="let t of ticketTypes.controls; let i=index">
+					<form [formGroupName]="i">
+						<div style="border-bottom: 2px solid gray">
+							<mat-form-field>
+								<mat-label>Name</mat-label>
+								<input matInput placeholder="Name of this ticket types" formControlName="name" required>
+							</mat-form-field>
+							<br>
+
+							<mat-form-field color="primary" class="full-width">
+								<input matInput type="number" placeholder="Price" name="Price" formControlName="price" required>
+							</mat-form-field>
+							<br>
+
+							<h3 style="margin-bottom: 10px ; font-size: 14px; font-weight: bold; text-transform: uppercase; color: grey">
+								Choose your ticket's design
+								<input type="file" name="file" class="inputfile">
+								<label style="padding: 10px; font-size: 16px" for="file">Choose a file</label>
+								<br>
+							</h3>
+
+							<mat-form-field appearance="fill" style="width:100%" >
+								<mat-label style="font-size: 16px; text-transform: uppercase">Ticket Description</mat-label>
+								<textarea matInput placeholder="Add Your Description" formControlName="description"></textarea>
+							</mat-form-field>
+
+							<!-- DELETE BUTTON FOR EACH OPTIONAL TICKET TYPE -->
+							<div style="display: flex; justify-content: flex-end;">
+								<button color="warn" mat-flat-button
+								        style="text-transform: uppercase; font-weight: bold"
+										(click)="removeTicket(i)">
+									Delete
+								</button>
+							</div>
+
+							<!-- FOR DEBUGGING PURPOSE -->
+							{{i}}
+							<br>
+							{{t.value | json}}
+						</div>
+					</form>
+					<br>
+				</div>
+			</div>
+		</form>
+
+		<!-- ADD OPTIONAL TICKET TYPE BUTTON -->
+		<div style="; display: flex; justify-content: center; align-items: center">
+			<button color="primary" mat-stroked-button
+			        style="height:48px !important; font-size:24px !important;"
+			        (click)="addTicketType()"
+			>
+				<mat-icon color="primary">add_circle</mat-icon>
+				Add Ticket's Type
+			</button>
+		</div>
+
+		<br>
+		<div style="display: flex; justify-content: flex-end;">
+			<button color="primary" mat-flat-button matStepperPrevious style="font-weight: bold; margin-right: 10px" >Back</button>
+			<button color="primary" mat-flat-button matStepperNext
+			        style="font-weight: bold" >
+			        <!-- [disabled]="createTicketForm.invalid"> -->
+					Next
+			</button>
+		</div>
+	</mat-step>
+
+
+	<mat-step [stepControl]="paymentMethodeForm">
+		<ng-template matStepLabel>PAYEMENT METHODE</ng-template>
+		<h4 class="mat-display-1 stepHeader" >PAYMENT METHODE</h4>
+
+		<form [formGroup]="paymentMethodeForm" (ngSubmit)=" submitTicket(); submitEvent();submitPaymentMeth() ; addEvent()">
+			<section>
+				<h4 style="font-size: 14px; font-weight: bold; text-transform: uppercase; color: grey">Select your event's type:</h4>
+				<p><mat-checkbox color="primary" formControlName="creditCard">Credit's Card</mat-checkbox></p>
+				<p><mat-checkbox color="primary" formControlName="paypal">Paypal</mat-checkbox></p>
+			</section>
+
+			<br>
+			<div style="display: flex; justify-content: flex-end;">
+				<button color="primary" mat-flat-button matStepperPrevious style="font-weight: bold; margin-right: 10px" >Back</button>
+				<button mat-flat-button color="primary" (click)="openDialog()"
+				        style="font-weight: bold" type="submit">
+				        <!-- [disabled]="paymentMethodeForm.invalid"> -->
+					Create Event
+				</button>
+			</div>
+			{{paymentMethodeForm.value | json}}
+		</form>
+	</mat-step>
+</mat-horizontal-stepper>
+
+<button mat-flat-button color="warn"
+        style="transform: scale(1.1); position: fixed; bottom: 40px; font-weight: bold; left: 50%;
+      translate(-50%, -50%);"
+        (click)="return()"
+>
+	Cancel
+</button>

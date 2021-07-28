@@ -1,0 +1,9 @@
+.center{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.scale{
+	zoom: 300%;
+	-moz-transform: scale(3);
+}

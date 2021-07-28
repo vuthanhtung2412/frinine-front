@@ -11,6 +11,19 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatStepperModule} from '@angular/material/stepper';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDialogModule} from '@angular/material/dialog';
+import {TextFieldModule} from '@angular/cdk/text-field';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
+//INTERNATIONAL PHONE NUMBER PICKER
+import {NgxMatIntlTelInputModule} from 'ngx-mat-intl-tel-input';
 
 const MaterialComponents =[
   MatButtonModule
@@ -29,7 +42,18 @@ const MaterialComponents =[
     MatGridListModule,
     MatRadioModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatStepperModule,
+    FlexLayoutModule,
+    MatMenuModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    TextFieldModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatChipsModule,
+    MatAutocompleteModule,
+    NgxMatIntlTelInputModule,
   ],
   exports: [
     MatButtonModule, 
@@ -43,7 +67,18 @@ const MaterialComponents =[
     MatGridListModule,
     MatRadioModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatStepperModule,
+    FlexLayoutModule,
+    MatMenuModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    TextFieldModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatChipsModule,
+    MatAutocompleteModule,
+    NgxMatIntlTelInputModule
   ]
 })
 export class MaterialModule { }

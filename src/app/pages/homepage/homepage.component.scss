@@ -1,0 +1,87 @@
+.pi-card {
+    margin: 10px;
+    position: relative;
+    width: 100%;
+    min-width: 200px;
+    border-radius: 30px ;
+    border: #000;
+}
+.event-card {
+    height: 220px;
+    border-radius: 30px ;
+}
+.add-card {
+    height: 220px;
+    border-radius: 30px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;
+}
+
+.event-card:hover , .add-card:hover {
+    background-color: lightgrey;
+    transform: scale(1.05);
+}
+
+.header{
+    border-bottom: 3px solid #000
+}
+mat-sidenav-container{
+  height: 100%;
+}
+mat-sidenav{
+  padding : 16px;
+}
+mat-sidenav{
+  background-color: rgb(64, 152, 224);
+  width : 300px
+}
+.white{
+  color : white
+}
+.white-icon {
+  color: white;
+}
+.font{
+  font-size: 20px
+}
+.bottom-left{
+  position: absolute;
+  bottom: 10px;
+  left : 10px;
+}
+
+// 3D transition
+.box{
+    margin-bottom: 20px;
+    height: 220px;
+}
+.frame {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: all 1s ease;
+}
+.frame.flipped {
+    transform: rotateY( 180deg );
+}
+.frame .front {
+    width: 96%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 30px
+}
+.frame .back {
+    right: 0;
+    width: 96%;
+    height: 100%;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    border-radius: 30px
+}
+.frame .front:hover{
+    background-color: lightgrey;
+    transform: scale(1.05);
+}

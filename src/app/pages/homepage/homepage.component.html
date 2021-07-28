@@ -1,0 +1,110 @@
+<mat-card class='pi-card'>
+  <div> <h1 class='header'> Personal Informations </h1> </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <mat-list>
+          <mat-list-item>
+            <mat-icon mat-list-icon>account_circle</mat-icon>
+            <div mat-line>Name</div>
+            <div mat-line>{{user.name}}</div>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon>face</mat-icon>
+            <div mat-line>Surname</div>
+            <div mat-line>{{user.surname}}</div>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon>event</mat-icon>
+            <div mat-line> Date of Birth </div>
+            <div mat-line >{{birthday*1000 | date}}</div>
+          </mat-list-item>
+        </mat-list>
+      </div>
+
+      <div class="col">
+        <mat-list>
+          <mat-list-item>
+            <mat-icon mat-list-icon>email</mat-icon>
+            <div mat-line> Email </div>
+            <div mat-line >{{user.email}}</div>
+          </mat-list-item>
+          <mat-list-item *ngIf="user.gender == 'm'">
+            <mat-icon mat-list-icon>male</mat-icon>
+            <div mat-line> Gender </div>
+            <div mat-line >Male</div>
+          </mat-list-item>
+          <mat-list-item *ngIf="user.gender == 'f'">
+            <mat-icon mat-list-icon>female</mat-icon>
+            <div mat-line> Gender </div>
+            <div mat-line> Female </div>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon>perm_identity</mat-icon>
+            <div mat-line> Username </div>
+            <div mat-line> {{user.username}}</div>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+  </div>
+</mat-card>
+
+<br>
+<h1 style="border-bottom: 2px solid grey ; font-size: 30px; padding-left: 30px; color:#37474F ; font-weight: bold; letter-spacing: 5px">Stats</h1>
+<br>
+
+<app-stats></app-stats>
+
+<h1 style="border-bottom: 2px solid grey ; font-size: 30px; padding-left: 30px; color:#37474F ; font-weight: bold; letter-spacing: 5px">My Events (Boostrap)</h1>
+<div class="container-fluid">
+  <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+
+    <!-- CARD TO ADD EVENT -->
+    <div>
+      <div class="col p-2" >
+        <mat-card (click)="addEvents()"
+                  class="add-card">
+          <mat-icon style="transform: scale(5); color : gray">add</mat-icon>
+        </mat-card>
+      </div>
+    </div>
+
+    <!--FLIPABLE EVENT CARD -->
+    <div *ngFor="let e of events; let i = index" class="col p-2 box" >
+      <div class = 'frame' [ngClass]="{'flipped': isFlipped[i] }">
+
+        <!--FRONTSIDE-->
+        <mat-card (mousedown)="mousedown(i)"
+                  (mouseup)="mouseup(e.id)"
+                  [ngStyle]="{'opacity': 1-timer/15}"
+                  class="frame front">
+          <mat-list>
+            <div> <h1 class='header'> {{e.name}} <br> [EVENT MANAGEMENT] </h1> </div>
+            <mat-list-item>
+              <mat-icon mat-list-icon>room</mat-icon>
+              <div mat-line> Location </div>
+              <div mat-line >{{e.location}}</div>
+            </mat-list-item>
+          </mat-list>
+        </mat-card>
+
+        <!--BACKSIDE -->
+        <mat-card class="frame back">
+          <h2 style="text-transform: uppercase; text-align: center; margin-top: 20px">Are you sure you want to delete this event ?</h2>
+          <br>
+          <div style="display: flex; justify-content: center">
+            <button color="warn" mat-flat-button style="margin-right: 60px; font-weight: bold"
+                    (click)="deleteEvent(e.id)">
+              YES
+            </button>
+            <button color="primary" mat-flat-button style=" font-weight: bold"
+                    (click)="isFlipped[i] = !isFlipped[i]">
+              NO
+            </button>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

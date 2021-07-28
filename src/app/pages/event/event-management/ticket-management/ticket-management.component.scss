@@ -1,0 +1,12 @@
+.ticket-card{
+	transition: all ease 0.8s;
+	opacity: 1;
+	height: 200px;
+}
+.ticket-card:hover{
+	background: #ECECEC;
+	transform: scale(1.05);
+}
+mat-card{
+	border: 1px darkgray solid;
+}

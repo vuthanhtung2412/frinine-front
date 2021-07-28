@@ -1,7 +1,8 @@
 import { Component, OnInit, EventEmitter} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../core/auth.service';
+import {AuthService} from '../../app-service/auth.service';
+import {User} from '../../interfaces/user';
 
 @Component({
   selector: 'app-register',
@@ -15,6 +16,7 @@ export class RegisterComponent implements OnInit {
   signUpEvent = new EventEmitter<boolean>(); // Pass event to parent works
   isFlipped : boolean; //Parent to child binding works
   signUpForm: FormGroup;
+  user : User
 
   constructor(
       private router: Router,
@@ -27,10 +29,11 @@ export class RegisterComponent implements OnInit {
   }
 
   buildForm() {
+
     this.signUpForm = this.formBuilder.group({
-      'nom': ['', [Validators.required]],
-      'prenom': ['', [Validators.required]],
-      'mail':['',[Validators.required,Validators.email]],
+      'name': ['', [Validators.required]],
+      'surname': ['', [Validators.required]],
+      'email':['',[Validators.required,Validators.email]],
       'username': ['', [Validators.required]],
       'password': ['', [Validators.required]],
       'gender': ['',[Validators.required]],
@@ -39,11 +42,20 @@ export class RegisterComponent implements OnInit {
   }
 
   signUp(): void {
-    /* this.authService.signUp(
-        this.signUpForm.value['username'],
-        this.signUpForm.value['password']
-    );*/
-    this.router.navigate(['/homepage/1']).then()
+    this.user = {
+      email: this.signUpForm.value['email'],
+      name: this.signUpForm.value['name'],
+      surname: this.signUpForm.value['surname'],
+      gender : this.signUpForm.value['gender'],
+      birthday: this.signUpForm.value['date-of-birth'],
+      username: this.signUpForm.value['username']
+    }
+
+    this.authService.signUp(
+        this.signUpForm.value['email'],
+        this.signUpForm.value['password'],
+        this.user
+    );
   }
 
   click(){

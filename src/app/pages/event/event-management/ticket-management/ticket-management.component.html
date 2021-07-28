@@ -1,0 +1,49 @@
+<div class="shadow p-3 mb-5 bg-white rounded" style="margin-top: 15px">
+	<div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+		<!-- ADD TICKET -->
+		<div class="col p-2 box">
+			<mat-card class = 'ticket-card' style="display: flex; justify-content: center; align-items: center"
+			          (click)="openCreateTicketDialog()"
+			>
+				<mat-icon style="transform: scale(5); color : gray">add</mat-icon>
+			</mat-card>
+		</div>
+
+		<!-- TICKET CARDS -->
+		<div *ngFor="let t of ticketType; let i = index" class="col p-2 box">
+			<mat-card class="ticket-card">
+				<mat-card-title style="border-bottom: #555251 solid 1px">
+					{{t.name}}
+					<!--DELETE BUTTON-->
+					<button mat-mini-fab aria-label="delete this ticket"
+					        style="position: absolute; right: 5%; transform: scale(0.7)"
+					        (click)="deleteTicket(i)"
+					        color="warn">
+						<mat-icon>delete</mat-icon>
+					</button>
+				</mat-card-title>
+				<div (click)="openUpdateTicketDialog(i)">
+					<mat-list>
+						<mat-list-item>
+							<mat-icon mat-list-icon>description</mat-icon>
+							<div mat-line> Description</div>
+							<div mat-line>{{t.description}}
+								Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+							</div>
+						</mat-list-item>
+						<mat-list-item>
+							<mat-icon mat-list-icon>paid</mat-icon>
+							<div mat-line> Price</div>
+							<div mat-line>{{t.price}}</div>
+						</mat-list-item>
+					</mat-list>
+				</div>
+			</mat-card>
+		</div>
+	</div>
+	<br>
+
+	<!--
+	<button mat-flat-button color="primary" (click)="printTickets()" >print tickets</button>
+	-->
+</div>

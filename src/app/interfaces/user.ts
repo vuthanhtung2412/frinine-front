@@ -1,9 +1,13 @@
+export type gender = 'm'|'f'
 export interface User {
-    id : number;
-    name : string;
-    prenom?: string;
-    birthday?: Date;
+    id? : string;
+    name: string;
+    surname?: string;
+    gender ? : gender;
+    birthday?: string;
     username?: string;
-    gmail: string;
-    password: string;
+    nationality?: string;
+    email: string;
+    telephone ?: string
+    password?: string;
 }
