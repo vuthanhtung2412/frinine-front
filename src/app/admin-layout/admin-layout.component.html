@@ -39,10 +39,21 @@
 				<span class="sidenavItem" *ngIf="showFiller" >Dashboard</span>
 				<mat-icon mat-list-icon>dashboard</mat-icon>
 			</mat-list-item>
-			<mat-list-item>
+			<mat-list-item (click)="toSell(); showSubmenu = !showSubmenu" >
 				<span class="sidenavItem" *ngIf="showFiller" >Sells</span>
 				<mat-icon mat-list-icon>confirmation_number</mat-icon>
 			</mat-list-item>
+			<div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="showFiller">
+				<mat-list-item>
+					<span class="sidenavItem" *ngIf="showFiller" >Facebook</span>
+					<mat-icon mat-list-icon>Sell 1</mat-icon>
+				</mat-list-item>
+				<mat-list-item>
+					<span class="sidenavItem" *ngIf="showFiller" >Web</span>
+					<mat-icon mat-list-icon>Sell 2</mat-icon>
+				</mat-list-item>
+			</div>
+
 			<mat-list-item>
 				<span class="sidenavItem" *ngIf="showFiller">CRM</span>
 				<mat-icon mat-list-icon>supervisor_account</mat-icon>

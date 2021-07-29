@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {defaultEvent, Event} from '../../../interfaces/event';
+import {defaultEvent, FrinineEvent} from '../../../interfaces/event';
 import {EventService} from '../../../app-service/event.service';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
@@ -11,28 +11,25 @@ import {FormBuilder} from '@angular/forms';
 })
 export class EventManagementComponent implements OnInit {
 
-  event : Event = defaultEvent;
-  dayFrom : string;
+  event: FrinineEvent = defaultEvent;
+  dayFrom: string;
   dayTo: string;
   id: string;
 
   constructor(
-      private route: ActivatedRoute,
-      private eventService: EventService,
-      private _builder: FormBuilder,
+		private route: ActivatedRoute,
+		private eventService: EventService,
+		private _builder: FormBuilder,
   ) {
   }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.eventService.getEventByID(this.id).subscribe(e =>{
-      this.event = e
-      this.parseDay(e);
-    })
+	this.id = this.route.snapshot.paramMap.get('id');
+	this.eventService.getEventByID(this.id);
   }
 
   parseDay(event){
-    this.event.from = new Date(event.from.seconds*1000)
-    this.event.to = new Date(event.to.seconds*1000)
+	this.event.from = new Date(event.from.seconds * 1000);
+	this.event.to = new Date(event.to.seconds * 1000);
   }
 }

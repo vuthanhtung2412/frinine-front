@@ -8,13 +8,13 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class DebugService {
 
   constructor(
-      private auth: AngularFireAuth
+		private auth: AngularFireAuth
   ) { }
 
   printAuth(){
-    this.auth.currentUser.then(user =>{
-      console.log(user.email)
-      console.log(user.uid)
-    })
+	this.auth.currentUser.then(user => {
+		console.log(user.email);
+		console.log(user.uid);
+	});
   }
 }

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Event} from '../interfaces/event';
+import {FrinineEvent} from '../interfaces/event';
 import {MockEventsDb} from '../interfaces/mock-events';
-import {Observable, of} from 'rxjs';
+import {Observable, of, Subject} from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
@@ -9,52 +9,79 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class EventService {
 
+	events: FrinineEvent[];
+	eventsSubject: Subject<FrinineEvent[]>;
+
+	eventSubject: Subject<FrinineEvent>;
+
   constructor(
-      private db : AngularFirestore
-  ) {}
-
-  getEventByID(id): Observable<any>{
-    return this.db
-        .collection('events')
-        .doc(id)
-        .valueChanges()
-    //const event = MockEventsDb.find(e => e.id ===id)!;
-    //return of(event);
+		private db: AngularFirestore
+  ) {
+	  this.events = [];
+	  this.eventsSubject = new Subject<FrinineEvent[]>();
   }
 
-  getEventByOrganiser(id): Observable<any>{
-    return this.db
-        .collection('events',ref => ref.where('organiserID','==',id))
-        .valueChanges({idField: 'id'})
-    //const events = MockEventsDb.filter(e => e.organiserID === id)
-    //return of(events)
+  getEventByID(id) {
+
+	 this.db
+		.collection('events')
+		.doc(id)
+		.valueChanges().subscribe(
+		 (event) => {
+			this.eventSubject.next(event);
+		 },
+		 (error) => {
+		 	console.error(error);
+		 }
+	 );
+
   }
+
+  getEventByOrganiser(id): Observable<FrinineEvent[]> {
+	return this.db
+		.collection('events', ref => ref.where('organiserID', '==', id))
+		.valueChanges({idField: 'id'});
+  }
+
+	getEventByOrganiserTest(id) {
+  		this.db
+			.collection('events', ref => ref.where('organiserID', '==', id))
+			.valueChanges({idField: 'id'}).subscribe(
+				(events: FrinineEvent[]) => {
+					this.events = events;
+					this.eventsSubject.next(this.events);
+				},
+				(error) => {
+					console.error(error);
+				}
+			);
+	}
 
   deleteEvent(id){
-    return this.db
-        .collection("events")
-        .doc(id)
-        .delete();
+	return this.db
+		.collection('events')
+		.doc(id)
+		.delete();
   }
 
-  createEvent(e: Event){
-    return new Promise<any>((resolve, reject) =>{
-      this.db
-          .collection("events")
-          .add(e)
-          .then(response => { console.log(response) },error => reject(error));
-    });
+  createEvent(e: FrinineEvent){
+	return new Promise<any>((resolve, reject) => {
+		this.db
+			.collection('events')
+			.add(e)
+			.then(response => { console.log(response); }, error => reject(error));
+	});
   }
 
-  getEvents(): Observable<Event[]>{
-      return of(MockEventsDb)
+  getEvents(): Observable<FrinineEvent[]>{
+		return of(MockEventsDb);
   }
 
   updateUser(updates, id) {
-    return this.db
-        .collection("events")
-        .doc(id)
-        .update(updates);
+	return this.db
+		.collection('events')
+		.doc(id)
+		.update(updates);
   }
 
 

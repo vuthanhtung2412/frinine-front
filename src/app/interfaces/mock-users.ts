@@ -1,6 +1,6 @@
 import {User} from './user';
 
-export const MockUsersDb: User[]=[
+export const MockUsersDb: User[] = [
 	{
 		id : '1',
 		name : 'tung',
@@ -31,4 +31,4 @@ export const MockUsersDb: User[]=[
 		email : 'tom@gmail.com',
 		password: 'tom'
 	},
-]
+];

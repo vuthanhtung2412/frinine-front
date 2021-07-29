@@ -1,22 +1,22 @@
 import {Ticket} from './ticket';
 
-export interface Event{
-	id? : string;
+export interface FrinineEvent{
+	id?: string;
 	name?: string;
-	email? : string;
-	tel? : string;
-	from? : Date;
-	to ? : Date;
+	email?: string;
+	tel?: string;
+	from?: Date;
+	to?: Date;
 	location?: string;
-	link? : string;
+	link?: string;
 	invPlaces ?: number;
 	soldPlaces ?: number;
 	capacity ?: number;
 	organiserID ?: string;
-	ticketType?: Ticket[]
+	ticketType?: Ticket[];
 	paymentMeth ?: string[];
 }
-export const defaultEvent: Event = {
+export const defaultEvent: FrinineEvent = {
 	id : null,
 	name : 'DEFAULT EVENT',
 	email : 'example-gmail@gmail.com',
@@ -36,4 +36,4 @@ export const defaultEvent: Event = {
 		}
 	],
 	paymentMeth: []
-}
+};
