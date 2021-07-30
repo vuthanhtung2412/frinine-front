@@ -25,7 +25,11 @@ export class EventManagementComponent implements OnInit {
 
   ngOnInit(): void {
 	this.id = this.route.snapshot.paramMap.get('id');
-	this.eventService.getEventByID(this.id);
+	this.eventService.getEventByID(this.id)
+	  this.eventService.eventSubject.subscribe((event) =>{
+	  	this.event = event;
+		  this.parseDay(this.event)
+	  })
   }
 
   parseDay(event){

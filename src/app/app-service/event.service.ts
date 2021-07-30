@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {FrinineEvent} from '../interfaces/event';
+import {FrinineEvent, defaultEvent} from '../interfaces/event';
 import {MockEventsDb} from '../interfaces/mock-events';
 import {Observable, of, Subject} from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -9,20 +9,22 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class EventService {
 
+	event : FrinineEvent;
 	events: FrinineEvent[];
-	eventsSubject: Subject<FrinineEvent[]>;
 
+	eventsSubject: Subject<FrinineEvent[]>;
 	eventSubject: Subject<FrinineEvent>;
 
   constructor(
 		private db: AngularFirestore
   ) {
-	  this.events = [];
-	  this.eventsSubject = new Subject<FrinineEvent[]>();
+  	this.events = [];
+  	this.eventSubject = new Subject<FrinineEvent>();
+  	this.eventsSubject = new Subject<FrinineEvent[]>();
   }
 
   getEventByID(id) {
-
+  	console.log(id)
 	 this.db
 		.collection('events')
 		.doc(id)
