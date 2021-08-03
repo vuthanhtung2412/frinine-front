@@ -37,7 +37,7 @@ export class SellComponent implements OnInit {
 				this.updateDatatable();
 			}
 		);
-		this.eventService.getEventByOrganiserTest('humQK8Mv2FZxkaXTctwKLbI2eHP2');
+		this.eventService.getEventByOrganiser('humQK8Mv2FZxkaXTctwKLbI2eHP2');
 	}
 
 	updateDatatable() {

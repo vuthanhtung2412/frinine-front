@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import {Component, OnInit, OnChanges, SimpleChanges, Input} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FrinineEvent} from '../../../../interfaces/event';
@@ -31,6 +31,9 @@ export class EventInfoComponent implements OnInit, OnChanges{
 
   ngOnInit(): void {
 
+  }
+  getEvent(){
+  	console.log(this.event);
   }
 
   ngOnChanges( changes: SimpleChanges){

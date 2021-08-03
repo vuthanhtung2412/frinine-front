@@ -19,6 +19,7 @@ export class EventService {
   ) {
 	  this.events = [];
 	  this.eventsSubject = new Subject<FrinineEvent[]>();
+	  this.eventSubject = new Subject<FrinineEvent>();
   }
 
   getEventByID(id) {
@@ -37,13 +38,7 @@ export class EventService {
 
   }
 
-  getEventByOrganiser(id): Observable<FrinineEvent[]> {
-	return this.db
-		.collection('events', ref => ref.where('organiserID', '==', id))
-		.valueChanges({idField: 'id'});
-  }
-
-	getEventByOrganiserTest(id) {
+	getEventByOrganiser(id) {
   		this.db
 			.collection('events', ref => ref.where('organiserID', '==', id))
 			.valueChanges({idField: 'id'}).subscribe(

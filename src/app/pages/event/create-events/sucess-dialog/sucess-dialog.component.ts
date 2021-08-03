@@ -16,6 +16,6 @@ export class SucessDialogComponent implements OnInit {
   }
 
   return(){
-    this.location.back()
+    this.location.back();
   }
 }
