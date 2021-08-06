@@ -23,19 +23,10 @@ export class EventService {
   }
 
   getEventByID(id) {
-  	console.log(id)
-	 this.db
+	 return this.db
 		.collection('events')
 		.doc(id)
-		.valueChanges().subscribe(
-		 (event) => {
-			this.eventSubject.next(event);
-		 },
-		 (error) => {
-		 	console.error(error);
-		 }
-	 );
-
+		.valueChanges()
   }
 
   getEventByOrganiser(id): Observable<FrinineEvent[]> {
@@ -74,7 +65,7 @@ export class EventService {
 	});
   }
 
-  updateUser(updates, id) {
+  updateEvent(updates, id) {
 	return this.db
 		.collection('events')
 		.doc(id)

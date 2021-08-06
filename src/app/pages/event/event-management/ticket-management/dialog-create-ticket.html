@@ -1,0 +1,38 @@
+<h2 style="font-weight: bold; color: #555251 ; border-bottom: 1px solid gray">CREATE NEW TICKET :</h2>
+<form [formGroup]="createForm">
+	<mat-form-field>
+		<mat-label>Name</mat-label>
+		<input matInput placeholder="Name of this ticket types" formControlName="name" required>
+	</mat-form-field>
+	<br>
+
+	<mat-form-field color="primary" class="full-width">
+		<input matInput type="number" placeholder="Price" name="Price" formControlName="price" required>
+	</mat-form-field>
+	<br><br>
+
+	<h3 style="margin-bottom: 10px ; font-size: 14px; font-weight: bold; text-transform: uppercase; color: grey">
+		Choose your ticket's design &nbsp;
+		<input type="file" name="file" class="inputfile">
+		<br>
+	</h3>
+	<br>
+
+	<mat-form-field appearance="fill" style="width:100%" >
+		<mat-label style="font-size: 16px; text-transform: uppercase">Ticket Description</mat-label>
+		<textarea matInput placeholder="Add Your Description" formControlName="description"></textarea>
+	</mat-form-field>
+</form>
+
+<div style="display: flex ; justify-content: flex-end">
+	<button matDialogClose mat-flat-button style="margin-right: 5%; font-weight: bold; background: #ececec">
+		CANCEL
+	</button>
+	<button [disabled]="createForm.invalid"
+	        matDialogClose
+			color="primary" mat-flat-button style=" font-weight: bold; margin-right: 3%"
+	        (click)="createTicket()">
+		CREATE
+	</button>
+</div>
+{{createForm.value | json}}
