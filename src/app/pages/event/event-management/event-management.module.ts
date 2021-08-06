@@ -6,8 +6,6 @@ import {MaterialModule} from '../../../shared/material.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {DialogCreateTicket, DialogUpdateTicket, TicketManagementComponent} from './ticket-management/ticket-management.component';
 
-
-
 @NgModule({
   declarations: [EventInfoComponent,
 	  CalendarComponent,
