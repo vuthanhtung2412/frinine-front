@@ -9,6 +9,8 @@ import {CreateEventsComponent} from './pages/event/create-events/create-events.c
 import {StatsComponent} from './pages/homepage/stats/stats.component';
 import {EventManagementComponent} from './pages/event/event-management/event-management.component';
 import {SellComponent} from './pages/sell/sell.component';
+import {DiscoverComponent} from './pages/discover/discover.component';
+import {EventComponent} from './pages/sell/event/event.component';
 
 const routes: Routes = [
 	{ path: 'chart', component: StatsComponent},
@@ -23,7 +25,9 @@ const routes: Routes = [
 			{ path: 'homepage/:id', component: HomepageComponent},
 			{ path: 'add-event', component: CreateEventsComponent},
 			{ path: 'event-management/:id', component: EventManagementComponent},
-			{ path: 'sell', component: SellComponent}
+			{ path: 'sell', component: SellComponent},
+			{ path: 'discover', component: DiscoverComponent},
+			{ path: 'event/:id', component: EventComponent}
 		]
 	},
 ];

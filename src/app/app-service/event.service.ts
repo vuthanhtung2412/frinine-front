@@ -92,6 +92,18 @@ export class EventService {
 		.update(updates);
   }
 
+  getAllEvents(){
+  	this.db
+	    .collection('events')
+	    .valueChanges({idField: 'id'})
+	    .subscribe(
+		    (events : FrinineEvent[]) =>{
+	    		this.events = events.map(e => this.parseDay(e))
+			    this.eventsSubject.next(this.events)
+		    }
+	    )
+  }
+
 
   /*getUserDoc(id) {
     return this.angularFirestore

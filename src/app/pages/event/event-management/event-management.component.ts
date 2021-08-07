@@ -38,9 +38,4 @@ export class EventManagementComponent implements OnInit {
           this.event = e
         })
   }
-
-  parseDay(event){
-    this.event.from = new Date(event.from.seconds*1000)
-    this.event.to = new Date(event.to.seconds*1000)
-  }
 }
