@@ -17,9 +17,18 @@ export class EventService {
   constructor(
 		private db: AngularFirestore
   ) {
+  	this.event = defaultEvent
   	this.events = [];
   	this.eventSubject = new Subject<FrinineEvent>();
   	this.eventsSubject = new Subject<FrinineEvent[]>();
+  }
+
+  parseDay(event): FrinineEvent{
+  	let e = event
+  	e.from = new Date(event.from.seconds*1000)
+	  e.to = new Date(event.to.seconds*1000)
+
+	  return e
   }
 
   getEventByID(id) {
@@ -27,6 +36,17 @@ export class EventService {
 		.collection('events')
 		.doc(id)
 		.valueChanges()
+  }
+
+  getEventByIDTest(id) {
+  	this.db
+	    .collection('events')
+	    .doc(id)
+	    .valueChanges().subscribe(
+	    	(event: FrinineEvent) =>{
+				this.event = this.parseDay(event)
+			    this.eventSubject.next(this.event)
+			})
   }
 
   getEventByOrganiser(id): Observable<FrinineEvent[]> {
