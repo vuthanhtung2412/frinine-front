@@ -1,5 +1,5 @@
 import { Component, OnInit , Input } from '@angular/core';
-import { User } from '../../interfaces/user';
+import {AnonymousUser, User} from '../../interfaces/user';
 import { FrinineEvent} from '../../interfaces/event';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -57,17 +57,11 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
 	this.id = this.route.snapshot.paramMap.get('id');
+	this.user = new AnonymousUser();
 	this.userService.userSubject.subscribe((user) => {
 		this.user = user;
-		this.birthday = user.birthday.seconds;
+		this.birthday = user.birthday;
 	});
-	/*this.userService.getUserByID(this.id)
-		.subscribe(user => {
-			this.user = user;
-			this.birthday = user.birthday.seconds;
-			console.log(this.user);
-		});
-	 */
 	this.eventsSubscription = this.eventService.eventsSubject.subscribe(
 		(events) => {
 			this.events = events;
@@ -75,15 +69,9 @@ export class HomepageComponent implements OnInit {
 			this.isFlipped.fill(false);
 		});
 	this.eventService.getEventByOrganiser(this.id);
-	this.userService.getUserByIDTest(this.id);
+	this.userService.getUserByID(this.id);
   }
 
-  getUser(){
-  	console.log(this.user);
-  }
-  checkClick(){
-	console.log('clicked');
-  }
   addEvents(){
 	this.router.navigate(['menu/add-event']).then();
   }

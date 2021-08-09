@@ -32,9 +32,6 @@ export class EventInfoComponent implements OnInit, OnChanges{
   ngOnInit(): void {
 
   }
-  getEvent(){
-  	console.log(this.event);
-  }
 
   ngOnChanges( changes: SimpleChanges){
 	console.log(changes.event.currentValue);

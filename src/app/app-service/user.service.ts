@@ -18,20 +18,12 @@ export class UserService {
       this.userSubject = new Subject<User>();
   }
 
-  getUserByID(id): Observable<any>{ // return the user by ID from the mock database
-	// const user = MockUsersDb.find(u => u.id ===id)!;
-	// return of(user);
-		return this.db
-			.collection('users')
-			.doc(id)
-			.valueChanges();
-  }
-  getUserByIDTest(id){
+  getUserByID(id){
       this.db
           .collection('users')
           .doc(id)
           .valueChanges().subscribe(
-          (user) => {
+          (user: User) => {
               this.userSubject.next(user);
           },
           (error) => {

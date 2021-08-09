@@ -29,10 +29,6 @@ export class EventManagementComponent implements OnInit {
       this.id = this.route.snapshot.paramMap.get('id');
       this.eventService.getEventByID(this.id);
       this.eventSubscription = this.eventService.eventSubject.subscribe(event => this.event = event);
-      //chua hieu vi sao phai dung subscription???
-  }
-  getEvent(){
-      console.log(this.event);
   }
 
   parseDay(event){
