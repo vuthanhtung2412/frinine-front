@@ -1,34 +1,28 @@
 <mat-toolbar color = 'primary' style="padding-right: 20px">
 	<button mat-icon-button (click)="showFiller = !showFiller"><mat-icon>menu</mat-icon></button>
 	<h1 class="header-font">Frinine</h1>
-	<div>
-		<button mat-mini-fab color="primary" aria-label="Info Perso" [matMenuTriggerFor]="PersoInfo" >
-			<mat-icon>account_circle</mat-icon>
-		</button>
-		<button mat-mini-fab color="primary" aria-label="Logout" style="margin: 0 15px " (click)="logout()">
-			<mat-icon>logout</mat-icon>
-		</button>
-	</div>
+	<button mat-mini-fab color="primary" aria-label="Info Perso" [matMenuTriggerFor]="PersoInfo" >
+		<mat-icon>account_circle</mat-icon>
+	</button>
 </mat-toolbar>
 
 <mat-menu #PersoInfo="matMenu" xPosition="before">
-	<mat-list style = " padding: 20px">
-		<div> <h1 style="border-bottom: 3px solid #000"> Personal Informations </h1> </div>
+	<mat-list>
 		<mat-list-item>
 			<mat-icon mat-list-icon>perm_identity</mat-icon>
-			<div mat-line>Name</div>
-			<div mat-line>name</div>
+			Personal Information
 		</mat-list-item>
-		<mat-list-item>
-			<mat-icon mat-list-icon>email</mat-icon>
-			<div mat-line>Gmail</div>
-			<div mat-line>gmail</div>
-		</mat-list-item>
-		<mat-list-item>
-			<mat-icon mat-list-icon>password</mat-icon>
-			<div mat-line> Password </div>
-			<div mat-line >password</div>
-		</mat-list-item>
+		<mat-selection-list [multiple]="false">
+			<mat-divider></mat-divider>
+			<mat-list-option (click)="toUser()">
+				<mat-icon mat-list-icon>settings</mat-icon>
+				User Management
+			</mat-list-option>
+			<mat-list-option (click)="logout()" >
+				<mat-icon mat-list-icon>logout</mat-icon>
+				Log out
+			</mat-list-option>
+		</mat-selection-list>
 	</mat-list>
 </mat-menu>
 
