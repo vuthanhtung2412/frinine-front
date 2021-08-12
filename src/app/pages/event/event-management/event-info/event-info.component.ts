@@ -35,12 +35,6 @@ export class EventInfoComponent implements OnInit, OnChanges{
 
   ngOnChanges( changes: SimpleChanges){
 	console.log(changes.event.currentValue);
-	// console.log(this.event)
-	// changes.event.currentValue = this.event
-	console.log(changes.event.currentValue.from);
-	console.log(changes.event.currentValue.to);
-	// this.buildUpdateForm();
-	// The problem is the date is invalid, if date is invalid form can be built
 	this.dateFrom = this.event.from.toISOString().slice(0, 16);
 	this.dateTo = this.event.to.toISOString().slice(0, 16);
 	this.buildUpdateForm();

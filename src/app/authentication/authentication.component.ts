@@ -15,6 +15,7 @@ export class AuthenticationComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   flip(){
     this.isFlipped = !this.isFlipped;
     console.log('Card is flipped ' + this.isFlipped);
