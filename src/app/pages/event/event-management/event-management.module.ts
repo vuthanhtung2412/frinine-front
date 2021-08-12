@@ -9,12 +9,12 @@ import { TicketManagementComponent } from './ticket-management/ticket-management
 
 
 @NgModule({
-  declarations: [EventInfoComponent,CalendarComponent, TicketManagementComponent],
+  declarations: [EventInfoComponent, CalendarComponent, TicketManagementComponent],
 	imports: [
 		CommonModule,
 		MaterialModule,
 		ReactiveFormsModule
 	],
-  exports:[EventInfoComponent,CalendarComponent,TicketManagementComponent]
+  exports: [EventInfoComponent, CalendarComponent, TicketManagementComponent]
 })
 export class EventManagementModule { }
