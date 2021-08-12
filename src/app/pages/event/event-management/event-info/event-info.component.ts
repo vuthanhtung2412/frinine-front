@@ -14,11 +14,13 @@ import {Location} from '@angular/common';
 export class EventInfoComponent implements OnInit, OnChanges{
 
   updateDisabled = true ;
-  updateEventForm: FormGroup;
-  event: FrinineEvent;
-  dateFrom: string;
-  dateTo: string;
+  updateEventForm : FormGroup;
+  event : FrinineEvent;
   id: string;
+
+  // IN ORDER TO DISPLAY VALUE IN INPUT CORRECTLY
+  dateFrom : string;
+  dateTo: string;
 
   constructor(
 		private location: Location,

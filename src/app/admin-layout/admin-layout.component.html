@@ -78,6 +78,11 @@
 				<span class="sidenavItem" *ngIf="showFiller" >Discover</span>
 				<mat-icon mat-list-icon>explore</mat-icon>
 			</mat-list-item>
+
+			<mat-list-item (click)="toPayment()">
+				<span class="sidenavItem" *ngIf="showFiller" >Payment</span>
+				<mat-icon mat-list-icon>payment</mat-icon>
+			</mat-list-item>
 		</mat-nav-list>
 	</mat-drawer>
 

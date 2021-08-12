@@ -23,12 +23,18 @@ import { HomepageModule } from './pages/homepage/homepage.module';
 import { AdminLayoutModule} from './admin-layout/admin-layout.module';
 import { EventModule} from './pages/event/event.module';
 import { SellModule } from './pages/sell/sell.module';
+import { PaymentComponent } from './pages/payment/payment.component';
 import { UserManagementModule} from "./pages/user-management/user-management.module";
 
+
+let paypal;
+
+let ng;
 
 @NgModule({
 	declarations: [
 		AppComponent,
+		PaymentComponent,
 	],
 	imports: [
 		// written modules

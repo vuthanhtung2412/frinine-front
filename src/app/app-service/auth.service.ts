@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user';
-import { MockUsersDb } from '../interfaces/mock-users';
-
 // Firebase's imports
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -22,12 +20,13 @@ export class AuthService {
   	// this.auth.signOut()
   	// Realtime authentication listener
   	this.auth.onAuthStateChanged(frinineUser => {
-  		if (frinineUser){
+	    if (frinineUser) {
 		    console.info(frinineUser.uid);
-	    }else{
-  			console.warn('not logged in ');
+	    } else {
+		    console.warn('not logged in ');
 	    }
-	});
+    })
+	    .then(r =>{});
   }
 
 	// React to change of auth state
@@ -56,7 +55,7 @@ export class AuthService {
   }
 
   logOut(){
-  	this.auth.signOut();
+  	this.auth.signOut().then();
   }
 
 }

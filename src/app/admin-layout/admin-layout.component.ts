@@ -31,6 +31,11 @@ export class AdminLayoutComponent implements OnInit {
   }
 
   toDiscover(){
+
+  }
+
+  toPayment(){
+    this.router.navigate(['menu/payment/']).then(r => {})
   }
 
   toDashboard(){
@@ -47,7 +52,7 @@ export class AdminLayoutComponent implements OnInit {
   }
 
   logout(){
-	this.authService.logOut();
-	this.router.navigate(['']);
+    this.authService.logOut()
+    this.router.navigate(['']).then(r => {})
   }
 }
