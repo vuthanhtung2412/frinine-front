@@ -1,0 +1,148 @@
+<h1>USER MANAGEMENT</h1>
+<mat-accordion class="example-headers-align" multi>
+    <!--User name-->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                User full name
+            </mat-panel-title>
+            <mat-panel-description>
+                NGUYEN Le Hoang
+                <mat-icon>account_circle</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        Change user name
+        <form [formGroup]="formName" (ngSubmit)="changeName()">
+            <mat-form-field appearance="fill">
+                <mat-label>First name</mat-label>
+                <input matInput formControlName="firstName">
+                <mat-error *ngIf="formName.get('firstName').hasError('required')">First name is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Last name</mat-label>
+                <input matInput formControlName="lastName">
+                <mat-error *ngIf="formName.get('lastName').hasError('required')">Last name is required</mat-error>
+            </mat-form-field>
+
+            <button class="btn btn-primary" (click)="accordion.closeAll()" type="submit">Confirm</button>
+        </form>
+    </mat-expansion-panel>
+
+    <!--Email-->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Email
+            </mat-panel-title>
+            <mat-panel-description>
+                lehoangnguyen510@gmail.com
+                <mat-icon>email</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        Change email
+        <form [formGroup]="formEmail" (ngSubmit)="changeEmail()">
+            <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Email Address</mat-label>
+                <input
+                        type="text"
+                        matInput
+                        formControlName="email"
+                        class="form-input-field"
+                        pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+                />
+                <mat-error *ngIf="formEmail.get('email').hasError('required')">Email is required</mat-error>
+                <mat-error *ngIf="formEmail.get('email').hasError('email')">Please enter a valid email address</mat-error>
+            </mat-form-field>
+            <button class="btn btn-primary" (click)="accordion.closeAll()" type="submit">Confirm</button>
+        </form>
+    </mat-expansion-panel>
+
+    <!--Telephone-->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Telephone number
+            </mat-panel-title>
+            <mat-panel-description>
+                0929 288 937
+                <mat-icon>call</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        Change contact number
+        <form [formGroup]="formTel" (ngSubmit)="changeTel()">
+            <mat-form-field appearance="fill">
+                <mat-label>Phone number</mat-label>
+                <input matInput
+                       type="tel"
+                       formControlName="tel"
+                >
+                <mat-error *ngIf="formTel.get('tel').hasError('required')">Phone number is required</mat-error>
+            </mat-form-field>
+            <button class="btn btn-primary" (click)="accordion.closeAll()" type="submit">Confirm</button>
+        </form>
+    </mat-expansion-panel>
+
+    <!--Password-->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Password
+            </mat-panel-title>
+            <mat-panel-description>
+                *******************
+                <mat-icon>lock</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        Change password
+        <form [formGroup]="formPwd">
+            <mat-form-field appearance="fill">
+                <mat-label>Old Password</mat-label>
+                <input matInput
+                        formControlName="oldPwd"
+                        id="oldPwd"
+                        type="password" />
+                <!--
+                <mat-error *ngIf="formPwd.get('oldPwd').hasError('required')">Old Password number is required</mat-error>
+                <mat-error *ngIf="formPwd.get('oldPwd').hasError('shouldBe1234')">Old Password number is required</mat-error>
+                -->
+                <div class="alert alert-danger" *ngIf="oldPwd.touched && oldPwd.invalid">
+                    <div *ngIf="oldPwd.errors.shouldBe1234">Old Password is not valid.</div>
+                    <div *ngIf="oldPwd.errors.required">Old Password is required.</div>
+                </div>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>New Password</mat-label>
+                <input matInput
+                        formControlName="newPwd"
+                        id="newPwd"
+                        type="password"
+                />
+                <div class="alert alert-danger" *ngIf="newPwd.touched && newPwd.invalid">
+                    <div *ngIf="newPwd.errors.required">New Password is required.</div>
+                </div>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput
+                        formControlName="confirmPwd"
+                        id="confirmPwd"
+                        type="password" />
+                <div class="alert alert-danger" *ngIf="confirmPwd.touched && confirmPwd.invalid">
+                    <div *ngIf="confirmPwd.errors.required">Confirm Password is required.</div>
+                </div>
+                <div class="alert alert-danger" *ngIf="confirmPwd.valid && formPwd.invalid && formPwd.errors.pwdsDontMatch">
+                    Passwords do not match.
+                </div>
+            </mat-form-field>
+        </form>
+        <button class="btn btn-primary" (click)="accordion.closeAll()" type="submit">Confirm</button>
+    </mat-expansion-panel>
+
+</mat-accordion>

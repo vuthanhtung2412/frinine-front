@@ -23,6 +23,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import {MatLineModule} from "@angular/material/core";
 
 // INTERNATIONAL PHONE NUMBER PICKER
 import {NgxMatIntlTelInputModule} from 'ngx-mat-intl-tel-input';
@@ -59,6 +60,7 @@ const MaterialComponents = [
 	MatTableModule,
 	MatPaginatorModule,
 	  MatSortModule,
+	  MatLineModule,
   ],
   exports: [
 	MatButtonModule,
