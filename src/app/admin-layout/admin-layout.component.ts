@@ -46,6 +46,10 @@ export class AdminLayoutComponent implements OnInit {
 		this.authService.auth.currentUser
 			.then(u => this.router.navigate(['menu/sell']));
   }
+  toUser(){
+      this.authService.auth.currentUser
+          .then(u => this.router.navigate(['menu/user']));
+  }
 
   logout(){
     this.authService.logOut()

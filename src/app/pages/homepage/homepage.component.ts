@@ -1,5 +1,5 @@
 import { Component, OnInit , Input } from '@angular/core';
-import { User } from '../../interfaces/user';
+import {AnonymousUser, User} from '../../interfaces/user';
 import { FrinineEvent} from '../../interfaces/event';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 // Services
 import { UserService } from '../../app-service/user.service';
 import { EventService } from '../../app-service/event.service';
+import {Subscription} from "rxjs";
 
 // interface to defined tile
 export interface Tile {
@@ -29,6 +30,7 @@ export class HomepageComponent implements OnInit {
 
   user: User;
   events: FrinineEvent[] = [];
+  eventsSubscription: Subscription;
   id: string;
   birthday: any; // Convert birhtday from timestamp type to date type
 
@@ -55,29 +57,21 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
 	this.id = this.route.snapshot.paramMap.get('id');
-	this.userService.getUserByID(this.id)
-		.subscribe(user => {
-			this.user = user;
-			this.birthday = user.birthday.seconds;
-			console.log(this.user);
-			this.getEvents(this.id);
-			// console.log(this.events);
+	this.user = new AnonymousUser();
+	this.userService.userSubject.subscribe((user) => {
+		this.user = user;
+		this.birthday = user.birthday;
+	});
+	this.eventsSubscription = this.eventService.eventsSubject.subscribe(
+		(events) => {
+			this.events = events;
+			this.isFlipped = new Array(events.length);
+			this.isFlipped.fill(false);
 		});
+	this.eventService.getEventByOrganiser(this.id);
+	this.userService.getUserByID(this.id);
   }
 
-  getEvents(id){
-	this.eventService.getEventByOrganiser(id).subscribe(
-		e => {
-			console.log(e);
-			this.events = e;
-			this.isFlipped = new Array(e.length);
-			this.isFlipped.fill(false);
-		}
-	);
-  }
-  checkClick(){
-	console.log('clicked');
-  }
   addEvents(){
 	this.router.navigate(['menu/add-event']).then();
   }
