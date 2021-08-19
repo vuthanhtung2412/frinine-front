@@ -7,7 +7,8 @@ import {EventService} from '../../../../app-service/event.service';
 
 interface eventData {
   index : number,
-  tickets: Ticket[]
+  ticketTypes: Ticket[],
+  tickets: string[]
 }
 let id : string
 @Component({
@@ -44,7 +45,7 @@ export class TicketManagementComponent implements OnInit, OnChanges {
     this.eventService.deleteTicket(this.tickets[i])
     this.tickets.splice(i,1)
     this.eventService.updateEvent(
-        {ticketType: this.ticketType,tickets : this.tickets},
+        {ticketType: this.ticketType , tickets : this.tickets},
         id).then()
   }
 
@@ -52,7 +53,7 @@ export class TicketManagementComponent implements OnInit, OnChanges {
     console.log(this.ticketType[index])
     const updateDialogRef = this.dialog.open(DialogUpdateTicket, {
       width: '50%',
-      data: {index: index , tickets: this.ticketType}
+      data: {index: index , ticketTypes: this.ticketType , tickets: this.tickets}
     });
   }
   openCreateTicketDialog(){
@@ -117,16 +118,17 @@ export class DialogUpdateTicket {
   ) {
     this.updateForm = this._builder.group({
       eventid : id,
-      name: [data.tickets[data.index].name, Validators.required],
-      price: [data.tickets[data.index].price.toString(),Validators.required],
-      description:[data.tickets[data.index].description]
+      name: [data.ticketTypes[data.index].name, Validators.required],
+      price: [data.ticketTypes[data.index].price.toString(),Validators.required],
+      description:[data.ticketTypes[data.index].description]
     })
   }
 
   updateTicket(){
     console.log('Update')
-    this.data.tickets[this.data.index]=this.updateForm.value
-    //console.log(this.data.tickets)
+    this.data.ticketTypes[this.data.index]=this.updateForm.value
+    //console.log
+    this.eventService.updateTicket(this.data.tickets[this.data.index],this.updateForm.value)
     this.eventService.updateEvent(
         {ticketType: this.data.tickets},
         id

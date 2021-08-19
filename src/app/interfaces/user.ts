@@ -36,5 +36,4 @@ export class AnonymousUser implements User{
 		this.telephone= '';
 		this.username= '';
 	}
-
 }
