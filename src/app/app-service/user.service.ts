@@ -9,12 +9,12 @@ import {Observable,Subject} from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-    userSubject: Subject<any>;
+    userSubject: Subject<User>;
   constructor(
 		private http: HttpClient,
 		private db: AngularFirestore,
   ){
-      this.userSubject = new Subject();
+      this.userSubject = new Subject<User>();
   }
 
   getUserByID(id){

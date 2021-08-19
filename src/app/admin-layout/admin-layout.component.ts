@@ -34,6 +34,10 @@ export class AdminLayoutComponent implements OnInit {
   	this.router.navigate(['menu/discover'])
   }
 
+  toPayment(){
+    this.router.navigate(['menu/payment/']).then(r => {})
+  }
+
   toDashboard(){
 	this.authService.auth.currentUser
 		.then(u => this.router.navigate(['menu/homepage/' + u.uid]));
@@ -42,9 +46,13 @@ export class AdminLayoutComponent implements OnInit {
 		this.authService.auth.currentUser
 			.then(u => this.router.navigate(['menu/sell']));
   }
+  toUser(){
+      this.authService.auth.currentUser
+          .then(u => this.router.navigate(['menu/user']));
+  }
 
   logout(){
-	this.authService.logOut();
-	this.router.navigate(['']);
+    this.authService.logOut()
+    this.router.navigate(['']).then(r => {})
   }
 }

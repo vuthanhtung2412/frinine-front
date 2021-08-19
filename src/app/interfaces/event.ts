@@ -1,6 +1,6 @@
 import {Ticket} from './ticket';
 
-export interface FrinineEvent{
+export interface FrinineEvent {
 	id?: string;
 	name?: string;
 	email?: string;
