@@ -1,7 +1,9 @@
 import {Injectable} from '@angular/core';
 import {FrinineEvent, defaultEvent} from '../interfaces/event';
 import {Observable, of, Subject} from 'rxjs';
+import {Ticket} from '../interfaces/ticket';
 import { AngularFirestore } from '@angular/fire/firestore';
+import {first} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -76,6 +78,21 @@ export class EventService {
 		.delete();
   }
 
+  deleteEventPhay(id){
+  	this.db
+	    .collection('events')
+	    .doc(id)
+	    .valueChanges()
+	    .subscribe(
+		    (e: FrinineEvent)=>{
+		    	e.tickets.forEach( ticketid =>{
+		    		this.deleteTicket(ticketid)
+			    })
+		    }
+	    )
+  	this.deleteEvent(id).then()
+  }
+
   createEvent(e: FrinineEvent){
 	return new Promise<any>((resolve, reject) => {
 		this.db
@@ -83,6 +100,26 @@ export class EventService {
 			.add(e)
 			.then(response => { console.log(response); }, error => reject(error));
 	});
+  }
+
+  async createEventPhay(e: FrinineEvent){
+	  return new Promise<any>((resolve, reject) => {
+		  this.db
+			  .collection('events')
+			  .add(e)
+			  .then(
+			  	async response => {
+			  		let tickets = []
+				    for (let t of e.ticketType) {
+					    t.eventid = response.id
+					    const {id} = await this.db
+						    .collection('products')
+						    .add(t)
+					    tickets.push(id)
+				    }
+				    await this.updateEvent({tickets : tickets},response.id)
+				    },error => {reject(error)});
+	  });
   }
 
   updateEvent(updates, id) {
@@ -104,6 +141,37 @@ export class EventService {
 	    )
   }
 
+  async createTicket(eid,t){
+  	const {id} = await this.db
+	    .collection('products')
+	    .add(t)
+
+	  let tickets = []
+
+	  this.db
+		  .collection('events')
+		  .doc(eid)
+		  .valueChanges()
+		  .pipe(first())
+		  .toPromise()
+		  .then(
+			  (e:FrinineEvent) => {
+			  	  tickets = e.tickets
+				  tickets.push(id)
+				  this.updateEvent({tickets: tickets},eid)
+		    }
+		  )
+  }
+
+  deleteTicket(tid){
+  	this.db
+	    .collection('products')
+	    .doc(tid)
+	    .delete()
+	    .then()
+  }
+
+  getTicket(id){}
 
   /*getUserDoc(id) {
     return this.angularFirestore

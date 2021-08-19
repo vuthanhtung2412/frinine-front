@@ -65,7 +65,8 @@ export class CreateEventsComponent implements OnInit {
 	this.createTicketForm = this._formBuilder.group({
 		name: ['', Validators.required],
 		price: [0, Validators.required],
-		description: ['']
+		description: [''],
+		quantity : [1, Validators.min(1)],
 	});
 
 	this.paymentMethodeForm = this._formBuilder.group({
@@ -152,7 +153,9 @@ export class CreateEventsComponent implements OnInit {
 	this.event.ticketType.push({
 			name: this.createTicketForm.get('name').value,
 			price: this.createTicketForm.get('price').value,
-			description: this.createTicketForm.get('description').value
+			description: this.createTicketForm.get('description').value,
+			quantity : this.createTicketForm.get('quantity').value,
+			sold : 0
 	});
 
 	// ADD OPTIONAL TICKETTYPE TO THE TICKETTYPE LIST
@@ -161,11 +164,12 @@ export class CreateEventsComponent implements OnInit {
 		this.event.ticketType.push({
 			name: t.get('name').value,
 			price: t.get('price').value,
-			description: t.get('description').value
+			description: t.get('description').value,
+			quantity: t.get('quantity').value,
+			sold : 0
 		});
 		}
 	}
-
 	console.log('Tickets Created !');
   }
 
@@ -184,7 +188,7 @@ export class CreateEventsComponent implements OnInit {
 	console.log(this.event);
 	this.authService.auth.currentUser.then(user => {
 		this.event.organiserID = user.uid;
-		this.eventService.createEvent(this.event)
+		this.eventService.createEventPhay(this.event)
 			.then(r => {});
 	});
   }
@@ -197,8 +201,9 @@ export class CreateEventsComponent implements OnInit {
   newTicketType(): FormGroup{
 	return this._formBuilder.group({
 		name: ['', Validators.required],
-		price: [0, Validators.required],
-		description: ['']
+		price: [0, [Validators.required,Validators.min(0)]],
+		description: [''],
+		quantity : [1, Validators.min(1)]
 	});
   }
 

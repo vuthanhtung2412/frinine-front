@@ -56,6 +56,7 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
 	this.id = this.route.snapshot.paramMap.get('id');
 	this.userService.getUserByID(this.id)
+	  this.userService.userSubject
 		.subscribe(user => {
 			this.user = user;
 			this.birthday = user.birthday.seconds;
@@ -84,10 +85,9 @@ export class HomepageComponent implements OnInit {
   toEventManagement(id){
 	this.router.navigate( ['menu/event-management', id]).then();
   }
-  deleteEvent(id){
-	this.eventService.deleteEvent(id).then(() => {
-		window.location.reload();
-	});
+  deleteEvent(id) {
+  	this.eventService.deleteEventPhay(id)
+  	//this.eventService.deleteEvent(id).then()
   }
 
   mousedown(i){

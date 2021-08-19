@@ -14,11 +14,12 @@ let id : string
   selector: 'app-ticket-management',
   templateUrl: './ticket-management.component.html',
   styleUrls: ['./ticket-management.component.scss'],
-  inputs: ['ticketType']
+  inputs: ['ticketType','tickets']
 })
 export class TicketManagementComponent implements OnInit, OnChanges {
 
   ticketType: Ticket[] =[]
+  tickets : string[] = []
   constructor(
       private route: ActivatedRoute,
       private dialog : MatDialog,
@@ -40,10 +41,11 @@ export class TicketManagementComponent implements OnInit, OnChanges {
   deleteTicket(i){
     console.log(this.ticketType[i].name + ' is deleted')
     this.ticketType.splice(i,1)
-    this.eventService.updateEvent({ticketType: this.ticketType}, id)
-        .then(r => {
-
-        })
+    this.eventService.deleteTicket(this.tickets[i])
+    this.tickets.splice(i,1)
+    this.eventService.updateEvent(
+        {ticketType: this.ticketType,tickets : this.tickets},
+        id).then()
   }
 
   openUpdateTicketDialog(index){
@@ -77,8 +79,11 @@ export class DialogCreateTicket {
   ) {
     this.createForm = this._builder.group({
       name: ['', Validators.required],
-      price: ['',Validators.required],
-      description:['']
+      price: [0,[Validators.required,Validators.min(0)]],
+      description:[''],
+      quantity : [1, Validators.min(1)],
+      sold : 0,
+      eventid : id
     })
   }
 
@@ -87,12 +92,11 @@ export class DialogCreateTicket {
     this.data.push(this.createForm.value)
     console.log('Create')
     //console.log(id)
+    this.eventService.createTicket(id, this.createForm.value).then()
     this.eventService.updateEvent(
         {ticketType: this.data},
         id
-    ).then(r => {
-
-    })
+    ).then()
   }
 }
 
@@ -112,6 +116,7 @@ export class DialogUpdateTicket {
       private eventService : EventService
   ) {
     this.updateForm = this._builder.group({
+      eventid : id,
       name: [data.tickets[data.index].name, Validators.required],
       price: [data.tickets[data.index].price.toString(),Validators.required],
       description:[data.tickets[data.index].description]
@@ -125,8 +130,6 @@ export class DialogUpdateTicket {
     this.eventService.updateEvent(
         {ticketType: this.data.tickets},
         id
-    ).then(r => {
-
-    })
+    ).then()
   }
 }
