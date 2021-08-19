@@ -165,7 +165,12 @@ export class EventService {
 	    .then()
   }
 
-  getTicket(id){}
+  async updateTicket(tid , updates){
+  	return this.db
+	    .collection('products')
+	    .doc(tid)
+	    .update(updates)
+  }
 
   /*getUserDoc(id) {
     return this.angularFirestore
