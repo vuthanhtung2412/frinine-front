@@ -31,7 +31,7 @@ export class AdminLayoutComponent implements OnInit {
   }
 
   toDiscover(){
-
+  	this.router.navigate(['menu/discover'])
   }
 
   toPayment(){

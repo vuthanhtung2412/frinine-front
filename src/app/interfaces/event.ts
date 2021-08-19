@@ -14,6 +14,7 @@ export interface FrinineEvent {
 	capacity ?: number;
 	organiserID ?: string;
 	ticketType?: Ticket[];
+	tickets ?: string[]
 	paymentMeth ?: string[];
 }
 export const defaultEvent: FrinineEvent = {
@@ -35,5 +36,6 @@ export const defaultEvent: FrinineEvent = {
 			description: 'LOADING'
 		}
 	],
+	tickets: [],
 	paymentMeth: []
 };

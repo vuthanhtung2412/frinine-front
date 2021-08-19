@@ -1,0 +1,16 @@
+<div class="container-fluid">
+	<div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+		<div *ngFor="let e of events; let i = index" class="col p-2 box">
+			<mat-card (click)="toEvent(e.id)">
+				<mat-list>
+					<div> <h1 class='header'> {{e.name}} </h1> </div>
+					<mat-list-item>
+						<mat-icon mat-list-icon>room</mat-icon>
+						<div mat-line> Location </div>
+						<div mat-line >{{e.location}}</div>
+					</mat-list-item>
+				</mat-list>
+			</mat-card>
+		</div>
+	</div>
+</div>

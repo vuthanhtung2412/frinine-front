@@ -19,6 +19,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -59,8 +61,10 @@ const MaterialComponents = [
 	MatButtonToggleModule,
 	MatTableModule,
 	MatPaginatorModule,
-	  MatSortModule,
-	  MatLineModule,
+	MatSortModule,
+	MatChipsModule,
+	MatAutocompleteModule,
+	MatLineModule,
   ],
   exports: [
 	MatButtonModule,
@@ -87,7 +91,9 @@ const MaterialComponents = [
 	MatButtonToggleModule,
 	MatTableModule,
 	MatPaginatorModule,
-	  MatSortModule,
+	MatSortModule,
+	MatChipsModule,
+	MatAutocompleteModule,
   ]
 })
 export class MaterialModule { }

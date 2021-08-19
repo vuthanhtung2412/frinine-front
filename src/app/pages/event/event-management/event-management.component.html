@@ -1,10 +1,6 @@
 <mat-tab-group dynamicHeight mat-align-tabs="center">
 	<mat-tab label="Infos">
-		<div class="shadow p-3 mb-5 bg-white rounded" style="margin-top: 15px">
-			<div *ngIf="event">
-				<app-event-info [event]="event"></app-event-info>
-			</div>
-		</div>
+		<app-event-info [event]="event"></app-event-info>
 	</mat-tab>
 
 	<mat-tab label="Stats">
@@ -13,57 +9,11 @@
 		</div>
 	</mat-tab>
 
-	<mat-tab label="Ticket Management">
-		<div class="shadow p-3 mb-5 bg-white rounded" style="margin-top: 15px">
-			<div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-				<!-- ADD TICKET -->
-				<div class="col p-2 box">
-					<mat-card class = 'ticket-card' style="display: flex; justify-content: center; align-items: center">
-						<mat-icon style="transform: scale(5); color : gray">add</mat-icon>
-					</mat-card>
-				</div>
-
-				<!-- TICKET CARDS -->
-				<div *ngFor="let t of event.ticketType" class="col p-2 box" >
-					<mat-card class="ticket-card">
-						<mat-card-title style="border-bottom: #555251 solid 1px">{{t.name}}</mat-card-title>
-						<mat-list>
-							<mat-list-item>
-								<mat-icon mat-list-icon>description</mat-icon>
-								<div mat-line> Description</div>
-								<div mat-line>{{t.description}}
-									Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-								</div>
-							</mat-list-item>
-							<mat-list-item>
-								<mat-icon mat-list-icon>paid</mat-icon>
-								<div mat-line> Price</div>
-								<div mat-line>{{t.price}}</div>
-							</mat-list-item>
-						</mat-list>
-					</mat-card>
-				</div>
-			</div>
-			<br>
-			<mat-accordion>
-				<mat-expansion-panel hideToggle>
-					<mat-expansion-panel-header>
-						<mat-panel-title style="font-weight: bold">
-							MODIFY
-						</mat-panel-title>
-						<mat-panel-description>
-							CLICK TO MODIFY TICKET INFOS
-						</mat-panel-description>
-					</mat-expansion-panel-header>
-					<p>This is the primary content of the panel.</p>
-				</mat-expansion-panel>
-			</mat-accordion>
-		</div>
+	<mat-tab label="Tickets">
+		<app-ticket-management [ticketType]="event.ticketType" [tickets]="event.tickets"></app-ticket-management>
 	</mat-tab>
 
 	<mat-tab label="Calendar">
-		<div class="shadow p-3 mb-5 bg-white rounded" style="margin-top: 15px">
-			<app-calendar [event]="event"></app-calendar>
-		</div>
+		<app-calendar [event]="event"></app-calendar>
 	</mat-tab>
 </mat-tab-group>

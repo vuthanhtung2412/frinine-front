@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../interfaces/user';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { MockUsersDb } from '../interfaces/mock-users';
-import {Observable, of, Subject} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {Observable,Subject} from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
