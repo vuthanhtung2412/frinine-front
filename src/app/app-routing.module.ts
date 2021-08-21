@@ -8,13 +8,13 @@ import {StatsComponent} from './pages/homepage/stats/stats.component';
 import {EventManagementComponent} from './pages/event/event-management/event-management.component';
 import {SellComponent} from './pages/sell/sell.component';
 import {PaymentComponent} from './pages/payment/payment.component';
-import {UserManagementComponent} from "./pages/user-management/user-management.component";
+import {UserComponent} from "./pages/user/user.component";
+import {ChangePwdComponent} from "./pages/user/change-pwd/change-pwd.component";
 
 const routes: Routes = [
 	{ path: 'chart', component: StatsComponent},
 	{ path : '', redirectTo: '/authentication', pathMatch: 'full'},
 	{ path: 'authentication', component: AuthenticationComponent},
-
 	{
 		path: 'menu',
 		component: AdminLayoutComponent,
@@ -24,7 +24,8 @@ const routes: Routes = [
 			{ path: 'add-event', component: CreateEventsComponent},
 			{ path: 'event-management/:id', component: EventManagementComponent},
 			{ path: 'sell', component: SellComponent},
-			{ path: 'user', component: UserManagementComponent},
+			{ path: 'user', component: UserComponent},
+			{ path: 'change-pwd', component: ChangePwdComponent},
 		]
 	},
 ];
