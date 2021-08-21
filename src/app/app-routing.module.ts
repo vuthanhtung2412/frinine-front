@@ -7,6 +7,8 @@ import {CreateEventsComponent} from './pages/event/create-events/create-events.c
 import {StatsComponent} from './pages/homepage/stats/stats.component';
 import {EventManagementComponent} from './pages/event/event-management/event-management.component';
 import {SellComponent} from './pages/sell/sell.component';
+import {DiscoverComponent} from './pages/discover/discover.component';
+import {EventComponent} from './pages/sell/event/event.component';
 import {PaymentComponent} from './pages/payment/payment.component';
 import {UserComponent} from "./pages/user/user.component";
 import {ChangePwdComponent} from "./pages/user/change-pwd/change-pwd.component";
@@ -26,6 +28,8 @@ const routes: Routes = [
 			{ path: 'sell', component: SellComponent},
 			{ path: 'user', component: UserComponent},
 			{ path: 'change-pwd', component: ChangePwdComponent},
+			{ path: 'discover', component: DiscoverComponent},
+			{ path: 'event/:id', component: EventComponent},
 		]
 	},
 ];

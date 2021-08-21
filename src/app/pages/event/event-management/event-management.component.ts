@@ -19,23 +19,25 @@ export class EventManagementComponent implements OnInit {
   id: string;
 
   constructor(
-		private route: ActivatedRoute,
-		private eventService: EventService,
-		private _builder: FormBuilder,
+      private route: ActivatedRoute,
+      private eventService: EventService,
+      private _builder: FormBuilder,
   ) {
   }
 
   ngOnInit(): void {
-	this.id = this.route.snapshot.paramMap.get('id');
-	this.eventService.getEventByID(this.id)
-	  this.eventService.eventSubject.subscribe((event) =>{
-	  	this.event = event;
-		  this.parseDay(this.event)
-	  })
-  }
+    this.id = this.route.snapshot.paramMap.get('id');
 
-  parseDay(event){
-	this.event.from = new Date(event.from.seconds * 1000);
-	this.event.to = new Date(event.to.seconds * 1000);
+    /*
+    this.eventService.getEventByID(this.id).subscribe(e =>{
+      this.event = e
+      this.parseDay(e);
+    })
+    */
+    this.eventService.getEventByIDTest(this.id)
+    this.eventService.eventSubject.subscribe(
+        e =>{
+          this.event = e
+        })
   }
 }

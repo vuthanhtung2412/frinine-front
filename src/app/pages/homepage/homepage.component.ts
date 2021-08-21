@@ -78,10 +78,9 @@ export class HomepageComponent implements OnInit {
   toEventManagement(id){
 	this.router.navigate( ['menu/event-management', id]).then();
   }
-  deleteEvent(id){
-	this.eventService.deleteEvent(id).then(() => {
-		window.location.reload();
-	});
+  deleteEvent(id) {
+  	this.eventService.deleteEventPhay(id)
+  	//this.eventService.deleteEvent(id).then()
   }
 
   mousedown(i){

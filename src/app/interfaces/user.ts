@@ -10,6 +10,7 @@ export interface User {
 	email: string;
 	telephone ?: string;
 	password?: string;
+	role ? : string
 }
 export class AnonymousUser implements User{
 	birthday: string;
@@ -35,5 +36,4 @@ export class AnonymousUser implements User{
 		this.telephone= '';
 		this.username= '';
 	}
-
 }
