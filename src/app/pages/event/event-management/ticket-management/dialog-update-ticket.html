@@ -1,4 +1,4 @@
-<h2 style="font-weight: bold; color: #555251; border-bottom: 1px solid gray">UPDATE {{data.tickets[data.index].name}} TICKET :</h2>
+<h2 style="font-weight: bold; color: #555251; border-bottom: 1px solid gray">UPDATE {{data.ticketTypes[data.index].name}} TICKET :</h2>
 <form [formGroup]="updateForm">
 	<mat-form-field>
 		<mat-label>Name</mat-label>
@@ -8,6 +8,11 @@
 
 	<mat-form-field color="primary" class="full-width">
 		<input matInput type="number" placeholder="Price" name="Price" formControlName="price" required>
+	</mat-form-field>
+	<br>
+	
+	<mat-form-field color="primary" class="full-width">
+		<input matInput type="number" placeholder="Quantity" name="Quantity" formControlName="quantity" required>
 	</mat-form-field>
 	<br><br>
 

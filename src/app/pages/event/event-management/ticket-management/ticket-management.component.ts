@@ -7,7 +7,8 @@ import {EventService} from '../../../../app-service/event.service';
 
 interface eventData {
   index : number,
-  tickets: Ticket[]
+  ticketTypes: Ticket[],
+  tickets: string[]
 }
 let id : string
 @Component({
@@ -20,6 +21,8 @@ export class TicketManagementComponent implements OnInit, OnChanges {
 
   ticketType: Ticket[] =[]
   tickets : string[] = []
+
+
   constructor(
       private route: ActivatedRoute,
       private dialog : MatDialog,
@@ -28,10 +31,17 @@ export class TicketManagementComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     id = this.route.snapshot.paramMap.get('id');
+    console.log(id)
+    this.eventService.getTicketsByEvent(id).then()
+    this.eventService.ticketsSubject.subscribe(
+        (tickets) =>{
+          this.ticketType = tickets
+        }
+    )
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(this.ticketType)
+    console.log(this.tickets)
   }
 
   printTickets(){
@@ -39,20 +49,18 @@ export class TicketManagementComponent implements OnInit, OnChanges {
   }
 
   deleteTicket(i){
-    console.log(this.ticketType[i].name + ' is deleted')
-    this.ticketType.splice(i,1)
     this.eventService.deleteTicket(this.tickets[i])
     this.tickets.splice(i,1)
-    this.eventService.updateEvent(
-        {ticketType: this.ticketType,tickets : this.tickets},
-        id).then()
+    this.eventService.updateEvent({tickets : this.tickets}, id).then(e => {
+      window.location.reload();
+    })
   }
 
   openUpdateTicketDialog(index){
     console.log(this.ticketType[index])
     const updateDialogRef = this.dialog.open(DialogUpdateTicket, {
       width: '50%',
-      data: {index: index , tickets: this.ticketType}
+      data: {index: index , ticketTypes: this.ticketType , tickets: this.tickets}
     });
   }
   openCreateTicketDialog(){
@@ -93,10 +101,6 @@ export class DialogCreateTicket {
     console.log('Create')
     //console.log(id)
     this.eventService.createTicket(id, this.createForm.value).then()
-    this.eventService.updateEvent(
-        {ticketType: this.data},
-        id
-    ).then()
   }
 }
 
@@ -117,16 +121,18 @@ export class DialogUpdateTicket {
   ) {
     this.updateForm = this._builder.group({
       eventid : id,
-      name: [data.tickets[data.index].name, Validators.required],
-      price: [data.tickets[data.index].price.toString(),Validators.required],
-      description:[data.tickets[data.index].description]
+      name: [data.ticketTypes[data.index].name, Validators.required],
+      price: [data.ticketTypes[data.index].price.toString(),Validators.required],
+      description:[data.ticketTypes[data.index].description],
+      quantity : [data.ticketTypes[data.index].quantity]
     })
   }
 
   updateTicket(){
     console.log('Update')
-    this.data.tickets[this.data.index]=this.updateForm.value
-    //console.log(this.data.tickets)
+    this.data.ticketTypes[this.data.index]=this.updateForm.value
+    //console.log
+    this.eventService.updateTicket(this.data.tickets[this.data.index],this.updateForm.value)
     this.eventService.updateEvent(
         {ticketType: this.data.tickets},
         id

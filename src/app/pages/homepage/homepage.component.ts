@@ -1,5 +1,5 @@
 import { Component, OnInit , Input } from '@angular/core';
-import {AnonymousUser, User} from '../../interfaces/user';
+import {AnonymousUser , User} from '../../interfaces/user';
 import { FrinineEvent} from '../../interfaces/event';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
