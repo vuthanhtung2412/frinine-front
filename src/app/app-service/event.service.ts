@@ -182,8 +182,9 @@ export class EventService {
 		  .pipe(first())
 		  .toPromise()
 		  .then((tickets: Ticket[]) => {
+
 			  this.tickets = tickets;
-			  console.log(this.tickets)
+			  console.log(this.tickets);
 			  this.ticketsSubject.next(this.tickets);
 		  },
 		  (error) => {
@@ -191,6 +192,7 @@ export class EventService {
 		  }
 	  );
   }
+  
 
 
 
