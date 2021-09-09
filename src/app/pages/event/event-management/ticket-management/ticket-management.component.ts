@@ -51,9 +51,9 @@ export class TicketManagementComponent implements OnInit, OnChanges {
   deleteTicket(i){
     this.eventService.deleteTicket(this.tickets[i])
     this.tickets.splice(i,1)
-    this.eventService.updateEvent({tickets : this.tickets}, id).then(e => {
-      window.location.reload();
-    })
+    this.eventService.updateEvent(
+        {ticketType: this.ticketType , tickets : this.tickets},
+        id).then()
   }
 
   openUpdateTicketDialog(index){

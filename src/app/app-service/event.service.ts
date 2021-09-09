@@ -171,9 +171,12 @@ export class EventService {
 	    .then()
   }
 
-  updateTicket(tid, updates){}
-
-  getTicket(id){}
+  async updateTicket(tid , updates){
+  	return this.db
+	    .collection('products')
+	    .doc(tid)
+	    .update(updates)
+  }
 
   async getTicketsByEvent(eid) {
 	  await this.db

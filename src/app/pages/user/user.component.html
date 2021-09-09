@@ -1,0 +1,36 @@
+
+<div class="container-fluid">
+    <div class="main-body">
+
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+            </ol>
+        </nav>
+        <!-- /Breadcrumb -->
+
+        <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                            <div class="mt-3">
+                                <h4>{{user.name}} {{user.surname}}</h4>
+                                <p class="text-secondary mb-1">Hello, this is where i tell you about myself</p>
+                                <p class="text-muted font-size-sm">Something here</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <app-profile [user]="user"></app-profile>
+                <app-change-pwd [user]="user"></app-change-pwd>
+            </div>
+        </div>
+
+    </div>
+</div>
