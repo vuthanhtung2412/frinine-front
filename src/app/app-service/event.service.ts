@@ -12,17 +12,23 @@ export class EventService {
 
 	event : FrinineEvent;
 	events: FrinineEvent[];
+	ticket : Ticket;
+	tickets : Ticket[];
 
 	eventsSubject: Subject<FrinineEvent[]>;
 	eventSubject: Subject<FrinineEvent>;
+	ticketSubject: Subject<Ticket>
+	ticketsSubject: Subject<Ticket[]>
 
   constructor(
 		private db: AngularFirestore
   ) {
   	this.event = defaultEvent
   	this.events = [];
+  	this.tickets =[];
   	this.eventSubject = new Subject<FrinineEvent>();
   	this.eventsSubject = new Subject<FrinineEvent[]>();
+  	this.ticketsSubject = new Subject<Ticket[]>();
   }
 
   parseDay(event): FrinineEvent{
@@ -171,6 +177,27 @@ export class EventService {
 	    .doc(tid)
 	    .update(updates)
   }
+
+  async getTicketsByEvent(eid) {
+	  await this.db
+		  .collection('products', ref => ref.where('eventid', '==', eid))
+		  .valueChanges({idField:'id'})
+		  .pipe(first())
+		  .toPromise()
+		  .then((tickets: Ticket[]) => {
+
+			  this.tickets = tickets;
+			  console.log(this.tickets);
+			  this.ticketsSubject.next(this.tickets);
+		  },
+		  (error) => {
+			  console.error(error);
+		  }
+	  );
+  }
+  
+
+
 
   /*getUserDoc(id) {
     return this.angularFirestore

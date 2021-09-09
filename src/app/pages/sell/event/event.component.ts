@@ -24,6 +24,7 @@ export class EventComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEvent()
+    this.getTickets()
   }
 
   getEvent(){
@@ -31,8 +32,16 @@ export class EventComponent implements OnInit {
     this.eventService.eventSubject.subscribe(
         (event) =>{
           this.event = event
-          this.tickets = event.ticketType
         }
+    )
+  }
+
+  getTickets(){
+    this.eventService.getTicketsByEvent(this.id).then()
+    this.eventService.ticketsSubject.subscribe(
+        (tickets) => {
+          this.tickets = tickets
+    }
     )
   }
 }

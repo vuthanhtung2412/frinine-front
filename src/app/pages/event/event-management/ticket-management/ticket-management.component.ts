@@ -21,6 +21,8 @@ export class TicketManagementComponent implements OnInit, OnChanges {
 
   ticketType: Ticket[] =[]
   tickets : string[] = []
+
+
   constructor(
       private route: ActivatedRoute,
       private dialog : MatDialog,
@@ -29,10 +31,17 @@ export class TicketManagementComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     id = this.route.snapshot.paramMap.get('id');
+    console.log(id)
+    this.eventService.getTicketsByEvent(id).then()
+    this.eventService.ticketsSubject.subscribe(
+        (tickets) =>{
+          this.ticketType = tickets
+        }
+    )
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(this.ticketType)
+    console.log(this.tickets)
   }
 
   printTickets(){
@@ -40,8 +49,6 @@ export class TicketManagementComponent implements OnInit, OnChanges {
   }
 
   deleteTicket(i){
-    console.log(this.ticketType[i].name + ' is deleted')
-    this.ticketType.splice(i,1)
     this.eventService.deleteTicket(this.tickets[i])
     this.tickets.splice(i,1)
     this.eventService.updateEvent(
@@ -94,10 +101,6 @@ export class DialogCreateTicket {
     console.log('Create')
     //console.log(id)
     this.eventService.createTicket(id, this.createForm.value).then()
-    this.eventService.updateEvent(
-        {ticketType: this.data},
-        id
-    ).then()
   }
 }
 
@@ -120,7 +123,8 @@ export class DialogUpdateTicket {
       eventid : id,
       name: [data.ticketTypes[data.index].name, Validators.required],
       price: [data.ticketTypes[data.index].price.toString(),Validators.required],
-      description:[data.ticketTypes[data.index].description]
+      description:[data.ticketTypes[data.index].description],
+      quantity : [data.ticketTypes[data.index].quantity]
     })
   }
 
