@@ -1,11 +1,34 @@
-# Fri (User Interface)
+# Frinine (User Interface)
+
+You can find the Demo of the project (deployed with Firebase) at https://frinine-60e07.web.app/  
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
 
 ## Development server
 
-Run `sudo ng serve` for a dev server. Navigate to `http://localhost:4200/`. 
+    
+    npm install
+    sudo ng serve 
+
+for a dev server. Navigate to `http://localhost:4200/`. 
 The app will automatically reload if you change any of the source files.
+
+## Project Overview
+
+### Sign In page
+![](/images/signIn.png)
+### Sign up page
+![](/images/signUp.png)
+### Home page
+![](/images/homeScreen.png)
+### Display Information of your created Event
+![](/images/existedEvent.png)
+### Create new Event
+![](/images/createEvent.png)
+### Follow the Event by Calendar
+![](/images/eventCalendar.png)
+### Create different ticket types for an event
+![](/images/createTicketType.png)
 
 ## Code scaffolding
 
